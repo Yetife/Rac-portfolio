@@ -2,37 +2,45 @@ function Experience() {
     const experiences = [
         {
             id: 1,
-            title: "Senior Frontend Developer",
-            company: "Tech Innovations Inc.",
-            duration: "Jan 2023 - Present",
+            title: "Junior Frontend Engineer",
+            company: "Semicolon Africa",
+            duration: "May 2022 - Dec 2023",
             description: [
-                "Lead the frontend development of a SaaS platform with 50,000+ users",
+                "Built and maintained web applications using Vue.js, React.js, and TypeScript, delivering optimized performance, and\n" +
+                "enhancing user engagement.",
                 "Implemented performance optimizations that improved page load times by 40%",
                 "Mentored junior developers and established frontend best practices",
-                "Collaborated with UI/UX team to create intuitive user interfaces",
+                "Developed modular front-end microservices using React, Material UI, and Tailwind CSS, improving scalability and\n" +
+                "reducing debugging time.",
             ],
-            technologies: ["React", "Next.js", "TypeScript", "Redux"]
+            technologies: ["Vue", "Nuxt js", "React", "Next.js", "TypeScript", "Redux"]
         },
         {
             id: 2,
-            title: "Frontend Developer",
-            company: "WebSolutions Agency",
-            duration: "Mar 2021 - Dec 2022",
+            title: "Frontend Developer Intern",
+            company: "Semicolon Africa",
+            duration: "Jan 2022 - Apr 2022",
             description: [
-                "Developed responsive websites for 15+ clients across various industries",
+                "Developed and optimized front-end interfaces using React.js, Redux, and Material UI, enhancing application\n" +
+                "usability and visual design consistency.",
+                "Built an interactive, event-based calendar feature, increasing user engagement with product advertisements.",
                 "Worked in an agile environment with 2-week sprint cycles",
                 "Built reusable component libraries to improve development efficiency",
-                "Integrated third-party APIs and services into client applications",
+                "Conducted code reviews and contributed to debugging, reducing production errors by 25%, and ensuring\n" +
+                "high-quality deliverables.",
             ],
-            technologies: ["React", "JavaScript", "SCSS", "REST APIs"]
+            technologies: ["React", "JavaScript", "SCSS", "REST APIs", "Tailwind CSS"]
         },
         {
             id: 3,
-            title: "Web Developer Intern",
-            company: "StartUp Ventures",
-            duration: "Jun 2020 - Feb 2021",
+            title: "Software Engineer Intern",
+            company: "Semicolon Africa",
+            duration: "Jun 2021 - Dec 2021",
             description: [
-                "Assisted in building the company's main product using modern web technologies",
+                "Built a learning management system that boosted trainees' learning efficiency by 60%, contributing to front-end and\n" +
+                "back-end development using React.js and Spring Boot",
+                "Developed and maintained high-performance, user-friendly websites using Git, Tailwind CSS, and agile best\n" +
+                "practices, enhancing user satisfaction by 25%.",
                 "Fixed bugs and implemented new features in the frontend codebase",
                 "Participated in code reviews and improved coding skills",
                 "Collaborated with backend developers to integrate REST APIs",

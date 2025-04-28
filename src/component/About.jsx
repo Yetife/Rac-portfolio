@@ -37,7 +37,8 @@ function About() {
 
                         <p className="text-gray-600 dark:text-gray-300 mb-4">
                             I'm passionate about clean code, user-centric design, and staying up-to-date with the latest
-                            frontend development trends. My goal is to create web experiences that are not only visually
+                            frontend development trends. I believe that great frontend development is not just about making things look good, but also about creating intuitive, fast, and accessible experiences for all users.
+                            My goal is to create web experiences that are not only visually
                             appealing but also highly functional and accessible to all users.
                         </p>
 

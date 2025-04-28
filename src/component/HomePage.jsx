@@ -50,7 +50,7 @@ function HomePage() {
                 {/*</div>*/}
                 <div className="hidden md:block">
                     <div className="flex justify-center items-center">
-                        <div className="w-2/4 h-auto rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <div className="w-4/6 h-auto rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
                             <img
                                 src={image}
                                 alt="professional headshot"
