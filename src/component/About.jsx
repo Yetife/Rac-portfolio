@@ -1,5 +1,5 @@
 import profile from '../assets/profImage.jpg'
-import image from '../assets/aboutImg.jpg'
+import image from '../assets/image.jpg'
 
 function About() {
     return (
@@ -42,10 +42,10 @@ function About() {
                             appealing but also highly functional and accessible to all users.
                         </p>
 
-                        <p className="text-gray-600 dark:text-gray-300 mb-4">
-                            When I'm not coding, you can find me contributing to open-source projects, writing technical
-                            articles on my blog, or exploring hiking trails in my local area.
-                        </p>
+                        {/*<p className="text-gray-600 dark:text-gray-300 mb-4">*/}
+                        {/*    When I'm not coding, you can find me contributing to open-source projects, writing technical*/}
+                        {/*    articles on my blog, or exploring hiking trails in my local area.*/}
+                        {/*</p>*/}
 
                         {/*<div className="flex mt-4 space-x-4">*/}
                         {/*    <a*/}

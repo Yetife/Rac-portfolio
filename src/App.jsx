@@ -70,7 +70,7 @@ function App() {
                         onClick={() => setDarkMode(!darkMode)}
                         className="hidden md:flex p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                     >
-                        {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                        {darkMode ? <Moon size={20} /> : <Sun size={20} /> }
                     </button>
 
                     {/* Mobile Menu Button */}

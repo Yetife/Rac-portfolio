@@ -1,43 +1,48 @@
 import {ExternalLink} from 'lucide-react';
 import dashboardImg from '../assets/adminDashboard.png'
+import enumImg from '../assets/enum.png'
+import semicolonWebsite from '../assets/semicolon-website.png'
+import akzum from '../assets/akzum.png'
+import cowbell from '../assets/cowbellUI.png'
+import store from '../assets/sore.png'
 
 function Projects() {
     const projects = [
         {
             id: 1,
-            title: "E-commerce Website",
-            description: "A fully responsive e-commerce platform built with React, Redux, and Firebase. Features include user authentication, product filtering, shopping cart, and payment integration.",
-            image: "/api/placeholder/600/400",
-            technologies: ["React", "Redux", "Firebase", "Stripe", "Tailwind CSS"],
-            github: "https://github.com/username/ecommerce-project",
-            demo: "https://ecommerce-project.example.com"
+            title: "Enum",
+            description: "A fully responsive Learning management platform built with React, Typescript, Redux, and Tailwind css. Features include user application system, assessment management system, Recruitment system, and interview management system. Collaborated with other frontend engineers.",
+            image: enumImg,
+            technologies: ["React", "Redux", "Typescript", "Tailwind CSS", "API Integration"],
+            github: "",
+            demo: "https://enum.africa"
         },
         {
             id: 2,
-            title: "Task Management App",
-            description: "A Kanban-style task management application with drag-and-drop functionality, user authentication, and real-time updates using WebSockets.",
-            image: "/api/placeholder/600/400",
-            technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
-            github: "https://github.com/username/task-manager",
-            demo: "https://task-manager.example.com"
+            title: "Cowbell Coffee website",
+            description: "An event management system for cowbell coffee. Features include Admin dashboard, performing artist page, event management page, admin profiling page",
+            image: cowbell,
+            technologies: ["React", "Tailwind css", "Redux Toolkit", "Api Integration"],
+            github: "https://github.com/Yetife/cowbell-ui",
+            demo: "https://cowbellcoffeestationontour.com/"
         },
         {
             id: 3,
-            title: "Weather Dashboard",
-            description: "A weather application that provides current weather data and forecasts for any location. Uses the OpenWeatherMap API and features clean data visualization.",
-            image: "/api/placeholder/600/400",
-            technologies: ["React", "Chart.js", "API Integration", "Geolocation"],
-            github: "https://github.com/username/weather-app",
-            demo: "https://weather-app.example.com"
+            title: "Semicolon website",
+            description: "A platform that grants you access to opportunities in the future of work and learning. Acquire in-demand skills, get matched with employers, hire qualified talent, manage virtual training, and monetise your training program in one place.",
+            image: semicolonWebsite,
+            technologies: ["Vue js", "Sass", "Tailwind css", "API Integration",],
+            github: "",
+            demo: "https://semicolon.africa"
         },
         {
             id: 4,
-            title: "Personal Blog",
-            description: "A blog platform built with Next.js and MDX for writing and publishing technical articles. Features dark mode, code syntax highlighting, and comment functionality.",
-            image: "/api/placeholder/600/400",
-            technologies: ["Next.js", "MDX", "Tailwind CSS", "Vercel"],
-            github: "https://github.com/username/dev-blog",
-            demo: "https://dev-blog.example.com"
+            title: "Akzum Digital",
+            description: "A Digital Marketing Agency platform built with Next.js and Firebase. Features dark mode, code syntax highlighting.",
+            image: akzum,
+            technologies: ["Next.js", "Firebase", "Tailwind CSS"],
+            github: "",
+            demo: "https://www.akzumdigitals.com/"
         },
         {
             id: 5,
@@ -50,12 +55,12 @@ function Projects() {
         },
         {
             id: 6,
-            title: "Recipe Finder App",
-            description: "A web application that allows users to search for recipes based on ingredients they have. Features include recipe saving, meal planning, and nutritional information.",
-            image: "/api/placeholder/600/400",
-            technologies: ["React", "CSS Modules", "Food API Integration"],
-            github: "https://github.com/username/recipe-finder",
-            demo: "https://recipe-finder.example.com"
+            title: "Cecayigo store",
+            description: "An e-commerce electrical appliances website. Features include product page, cart, Categories page and blog paga.",
+            image: store,
+            technologies: ["Next.js", "Firebase", "Tailwind CSS"],
+            github: "",
+            demo: "https://www.cecayigostore.com/"
         }
     ];
 
