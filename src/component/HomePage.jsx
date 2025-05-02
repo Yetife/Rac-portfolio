@@ -3,7 +3,7 @@ import image from '../assets/image.jpg'
 
 function HomePage() {
     return (
-        <section id="home" className="py-40 flex items-center justify-center h-screen w-full bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <section id="home" className="md:py-40 pt-40 pb-20 flex items-center justify-center h-screen w-full bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
             <div className="max-w-screen-lg mx-auto flex items-center justify-center h-full px-4 md:flex-row flex-col-reverse">
                 <div className="flex flex-col justify-center h-full">
                     <p className="text-teal-500 font-bold">Hello, I'm</p>

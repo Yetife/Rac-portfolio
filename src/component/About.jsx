@@ -3,7 +3,7 @@ import image from '../assets/image.jpg'
 
 function About() {
     return (
-        <section id="about" className="py-20 bg-white dark:bg-gray-800">
+        <section id="about" className="py-10 md:py-20 bg-white dark:bg-gray-800">
             <div className="max-w-screen-lg mx-auto px-4">
                 <div className="pb-8">
                     <h2 className="text-4xl font-bold inline border-b-4 border-teal-500">About Me</h2>
