@@ -2,6 +2,21 @@ function Experience() {
     const experiences = [
         {
             id: 1,
+            title: "Mid level Frontend Engineer",
+            company: "Creditwave Finance Limited",
+            duration: "Nov 2023 - Dec 2024",
+            description: [
+                "Engineered a mobile-responsive loan application using React.js and Tailwind CSS, streamlining financial services such as loans, savings, and peer-to-peer lending, improving user engagement.",
+                "Designed advanced data visualization features, empowering administrators with actionable insights on loan\n" +
+                "applications, savings, and transactions through dynamic charts and dashboards.",
+                "Optimized frontend-backend integration by implementing secure APIs, increasing data retrieval speed by 25%, and\n" +
+                "ensuring high accuracy for real-time customer data updates.",
+                "Enhanced platform scalability and responsiveness, leading to a 30% improvement in data management efficiency,and accelerating customer application and transaction processes.",
+            ],
+            technologies: ["React", "React Native", "Javascript", "Redux"]
+        },
+        {
+            id: 2,
             title: "Junior Frontend Engineer",
             company: "Semicolon Africa",
             duration: "May 2022 - Dec 2023",
@@ -13,10 +28,10 @@ function Experience() {
                 "Developed modular front-end microservices using React, Material UI, and Tailwind CSS, improving scalability and\n" +
                 "reducing debugging time.",
             ],
-            technologies: ["Vue", "Nuxt js", "React", "Next.js", "TypeScript", "Redux"]
+            technologies: ["Vue", "Nuxt js", "React", "Next.js", "TypeScript",  "Javascript", "Redux"]
         },
         {
-            id: 2,
+            id: 3,
             title: "Frontend Developer Intern",
             company: "Semicolon Africa",
             duration: "Jan 2022 - Apr 2022",
@@ -32,7 +47,7 @@ function Experience() {
             technologies: ["React", "JavaScript", "SCSS", "REST APIs", "Tailwind CSS"]
         },
         {
-            id: 3,
+            id: 4,
             title: "Software Engineer Intern",
             company: "Semicolon Africa",
             duration: "Jun 2021 - Dec 2021",
