@@ -56,7 +56,7 @@ function Projects() {
         {
             id: 6,
             title: "Cecayigo store",
-            description: "An e-commerce electrical appliances website. Features include product page, cart, Categories page and blog paga.",
+            description: "An e-commerce electrical appliances website. Features include product page, cart, Categories page and blog page.",
             image: store,
             technologies: ["Next.js", "Firebase", "Tailwind CSS"],
             github: "",
