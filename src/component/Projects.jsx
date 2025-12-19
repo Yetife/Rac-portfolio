@@ -2,9 +2,9 @@ import {ExternalLink} from 'lucide-react';
 import dashboardImg from '../assets/adminDashboard.png'
 import enumImg from '../assets/enum.png'
 import semicolonWebsite from '../assets/semicolon-website.png'
-import akzum from '../assets/akzum.png'
+import kuve from '../assets/kuve.png'
 import cowbell from '../assets/cowbellUI.png'
-import store from '../assets/sore.png'
+
 
 function Projects() {
     const projects = [
@@ -37,12 +37,12 @@ function Projects() {
         },
         {
             id: 4,
-            title: "Akzum Digital",
-            description: "A Digital Marketing Agency platform built with Next.js and Firebase. Features dark mode, code syntax highlighting.",
-            image: akzum,
-            technologies: ["Next.js", "Firebase", "Tailwind CSS"],
+            title: "Kuve Marketplace",
+            description: "An AI powered marketplace built with Next.js. Features dark mode, code syntax highlighting.",
+            image: kuve,
+            technologies: ["Next.js", "Tailwind CSS", "API Integration"],
             github: "",
-            demo: "https://www.akzumdigitals.com/"
+            demo: "https://getkuve.com/"
         },
         {
             id: 5,
@@ -53,15 +53,15 @@ function Projects() {
             github: "https://github.com/Yetife/admin-dashboard-frontend.git",
             demo: "https://vocal-blancmange-482f1a.netlify.app/"
         },
-        {
-            id: 6,
-            title: "Cecayigo store",
-            description: "An e-commerce electrical appliances website. Features include product page, cart, Categories page and blog page.",
-            image: store,
-            technologies: ["Next.js", "Firebase", "Tailwind CSS"],
-            github: "",
-            demo: "https://www.cecayigostore.com/"
-        }
+        // {
+        //     id: 6,
+        //     title: "Cecayigo store",
+        //     description: "An e-commerce electrical appliances website. Features include product page, cart, Categories page and blog page.",
+        //     image: store,
+        //     technologies: ["Next.js", "Firebase", "Tailwind CSS"],
+        //     github: "",
+        //     demo: "https://www.cecayigostore.com/"
+        // }
     ];
 
     return (
