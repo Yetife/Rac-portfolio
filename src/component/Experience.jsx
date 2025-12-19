@@ -7,7 +7,9 @@ function Experience() {
             duration: "May 2025 - Till date",
             description: [
                 "Developed sleek, high-performance UIs with Next.js, TypeScript, React.js,  and Tailwind CSS, optimising user flows across product listings, checkout, and onboarding",
-            ],
+                "Collaborated with cross-functional teams to bring complex AI-powered product recommendations to life.",
+                "Integrated RESTful APIs to enable seamless user interactions and real-time marketplace updates."
+        ],
             technologies: ["React", "Next js", "Javascript", "Zustand"]
         },
         {
