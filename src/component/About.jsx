@@ -1,4 +1,4 @@
-import profile from '../assets/profImage.jpg'
+import head_shot from '../assets/head_shot.png'
 import image from '../assets/image.jpg'
 
 function About() {

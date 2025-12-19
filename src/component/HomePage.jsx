@@ -8,7 +8,7 @@ function HomePage() {
                 <div className="flex flex-col justify-center h-full">
                     <p className="text-teal-500 font-bold">Hello, I'm</p>
                     <h1 className="text-4xl sm:text-7xl font-bold py-4 max-w-lg">
-                        Rachael Olasehinde
+                        Yetunde Olasehinde
                     </h1>
                     <h2 className="text-lg sm:text-2xl text-gray-600 dark:text-gray-400 pb-4">
                         Frontend Engineer

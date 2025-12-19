@@ -3,6 +3,16 @@ function Experience() {
         {
             id: 1,
             title: "Mid level Frontend Engineer",
+            company: "Kuve Technologies Limited",
+            duration: "May 2025 - Till date",
+            description: [
+                "Developed sleek, high-performance UIs with Next.js, TypeScript, React.js,  and Tailwind CSS, optimising user flows across product listings, checkout, and onboarding",
+            ],
+            technologies: ["React", "Next js", "Javascript", "Zustand"]
+        },
+        {
+            id: 2,
+            title: "Mid level Frontend Engineer",
             company: "Creditwave Finance Limited",
             duration: "Nov 2023 - Dec 2024",
             description: [
@@ -16,7 +26,7 @@ function Experience() {
             technologies: ["React", "React Native", "Javascript", "Redux"]
         },
         {
-            id: 2,
+            id: 3,
             title: "Junior Frontend Engineer",
             company: "Semicolon Africa",
             duration: "May 2022 - Dec 2023",
@@ -31,7 +41,7 @@ function Experience() {
             technologies: ["Vue", "Nuxt js", "React", "Next.js", "TypeScript",  "Javascript", "Redux"]
         },
         {
-            id: 3,
+            id: 4,
             title: "Frontend Developer Intern",
             company: "Semicolon Africa",
             duration: "Jan 2022 - Apr 2022",
@@ -46,22 +56,22 @@ function Experience() {
             ],
             technologies: ["React", "JavaScript", "SCSS", "REST APIs", "Tailwind CSS"]
         },
-        {
-            id: 4,
-            title: "Software Engineer Intern",
-            company: "Semicolon Africa",
-            duration: "Jun 2021 - Dec 2021",
-            description: [
-                "Built a learning management system that boosted trainees' learning efficiency by 60%, contributing to front-end and\n" +
-                "back-end development using React.js and Spring Boot",
-                "Developed and maintained high-performance, user-friendly websites using Git, Tailwind CSS, and agile best\n" +
-                "practices, enhancing user satisfaction by 25%.",
-                "Fixed bugs and implemented new features in the frontend codebase",
-                "Participated in code reviews and improved coding skills",
-                "Collaborated with backend developers to integrate REST APIs",
-            ],
-            technologies: ["HTML", "CSS", "JavaScript", "jQuery"]
-        }
+        // {
+        //     id: 4,
+        //     title: "Software Engineer Intern",
+        //     company: "Semicolon Africa",
+        //     duration: "Jun 2021 - Dec 2021",
+        //     description: [
+        //         "Built a learning management system that boosted trainees' learning efficiency by 60%, contributing to front-end and\n" +
+        //         "back-end development using React.js and Spring Boot",
+        //         "Developed and maintained high-performance, user-friendly websites using Git, Tailwind CSS, and agile best\n" +
+        //         "practices, enhancing user satisfaction by 25%.",
+        //         "Fixed bugs and implemented new features in the frontend codebase",
+        //         "Participated in code reviews and improved coding skills",
+        //         "Collaborated with backend developers to integrate REST APIs",
+        //     ],
+        //     technologies: ["HTML", "CSS", "JavaScript", "jQuery"]
+        // }
     ];
 
     return (
