@@ -1,5 +1,5 @@
 import profile from '../assets/profImage.jpg'
-import image from '../assets/image.jpg'
+import image from '../assets/head_shot1.png'
 
 function HomePage() {
     return (

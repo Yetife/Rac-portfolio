@@ -11,7 +11,7 @@ import {
     Download,
     ArrowUp,
 } from "lucide-react";
-import image from '../assets/image.jpg'
+import image from '../assets/profile_image.png'
 
 /* ---------------------------------------------------------------------- */
 /*  Tokens                                                                */
