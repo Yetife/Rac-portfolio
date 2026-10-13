@@ -27,6 +27,7 @@ export default function ProjectPreview({ project, active }) {
               src={src}
               alt=""
               loading="lazy"
+              decoding="async"
               onError={hideOnError}
               className="h-[92%] rounded-3xl shadow-[0_30px_60px_-28px_rgba(28,25,23,.55)]"
               style={{
@@ -53,6 +54,7 @@ export default function ProjectPreview({ project, active }) {
             src={project.image}
             alt={project.name}
             loading="lazy"
+            decoding="async"
             onError={hideOnError}
             className="block h-[calc(100%-30px)] w-full object-cover object-left-top"
           />

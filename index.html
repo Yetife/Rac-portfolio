@@ -14,7 +14,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Yetunde Olasehinde | Frontend Engineer" />
     <meta property="og:description" content="Specializing in React, Next.js, TypeScript, and high-performance Web Applications. 4+ years building fintech and AI marketplace platforms." />
-    <meta property="og:image" content="/assets/kuve.png" />
+    <meta property="og:image" content="/assets/portrait-696.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Yetunde Olasehinde | Frontend Engineer" />
     <meta name="twitter:description" content="Specializing in React, Next.js, TypeScript, and high-performance Web Applications." />
@@ -23,10 +23,17 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2750%27 fill=%27%231c1917%27/%3E%3Ctext x=%2750%27 y=%2766%27 text-anchor=%27middle%27 font-family=%27Georgia,serif%27 font-size=%2746%27 font-style=%27italic%27 fill=%27%23f7f3ed%27%3EYo%3C/text%3E%3C/svg%3E" />
     <meta name="theme-color" content="#f7f3ed" />
 
-    <!-- Fonts: Geist, Geist Mono & Instrument Serif -->
+    <!-- Hero portrait is the largest element on first paint; fetch it alongside the JS bundle -->
+    <link rel="preload" as="image" type="image/webp" href="/assets/portrait-696.webp"
+      imagesrcset="/assets/portrait-400.webp 400w, /assets/portrait-696.webp 696w"
+      imagesizes="(min-width: 1024px) 500px, calc(100vw - 40px)" fetchpriority="high" />
+
+    <!-- Fonts: Geist, Geist Mono & Instrument Serif (loaded without blocking first render) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"></noscript>
   </head>
   <body>
     <div id="root"></div>

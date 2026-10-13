@@ -1,13 +1,12 @@
-import kuveImg from '../assets/kuve.png';
-import enumImg from '../assets/enum.png';
-import semicolonImg from '../assets/semicolon-website.png';
-import portraitImg from '../assets/portrait.png';
-
-// Images not yet in src/assets live in /public/assets/projects.
-// Drop the files there with these exact names and they appear automatically.
-const EMAX_HOME = '/assets/projects/emax-home.png';
-const EMAX_DETAIL = '/assets/projects/emax-detail.png';
-const SOLAR_IMG = '/assets/projects/solar.png';
+// Optimized WebP images served from /public/assets (generated from the PNG originals).
+const IMG = "/assets/projects";
+const kuveImg = `${IMG}/kuve.webp`;
+const enumImg = `${IMG}/enum.webp`;
+const semicolonImg = `${IMG}/semicolon.webp`;
+const SOLAR_IMG = `${IMG}/solar.webp`;
+const EMAX_HOME = `${IMG}/emax-home.webp`;
+// Not added yet — drop a WebP with this name in /public/assets/projects to show the second phone.
+const EMAX_DETAIL = `${IMG}/emax-detail.webp`;
 
 export const PERSONAL_INFO = {
   firstName: "Yetunde",
@@ -27,7 +26,8 @@ export const PERSONAL_INFO = {
   githubHandle: "@Yetife",
   linkedin: "https://www.linkedin.com/in/yetunde-olasehinde",
   linkedinHandle: "yetunde-olasehinde",
-  avatar: portraitImg,
+  avatar: "/assets/portrait-696.webp",
+  avatarSrcSet: "/assets/portrait-400.webp 400w, /assets/portrait-696.webp 696w",
   resumeUrl: "/resume.pdf",
 };
 

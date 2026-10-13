@@ -63,10 +63,17 @@ export default function Hero() {
         </dl>
       </div>
 
-      <div data-reveal="zoom" data-delay="150" className="relative w-full max-w-[500px] justify-self-center">
+      {/* No scroll-reveal here: the portrait is the LCP element, so it must paint immediately. */}
+      <div className="relative w-full max-w-[500px] justify-self-center">
         <div className="group aspect-[4/5] overflow-hidden rounded-[28px] bg-cream-deep shadow-[0_40px_80px_-40px_rgba(120,53,15,.45)]">
           <img
             src={PERSONAL_INFO.avatar}
+            srcSet={PERSONAL_INFO.avatarSrcSet}
+            sizes="(min-width: 1024px) 500px, calc(100vw - 40px)"
+            width="696"
+            height="870"
+            fetchPriority="high"
+            decoding="async"
             alt={PERSONAL_INFO.name}
             className="block h-full w-full object-cover object-top transition-transform duration-[1200ms] ease-smooth group-hover:scale-[1.04]"
           />
