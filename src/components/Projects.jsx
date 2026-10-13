@@ -1,180 +1,138 @@
-import React, { useState } from 'react';
-import { ExternalLink, Github, ArrowUpRight, Layers, Sparkles, Terminal } from 'lucide-react';
-import { PROJECTS, PROJECT_CATEGORIES } from '../data/portfolioData';
+import { useCallback, useState } from 'react';
+import { PROJECTS } from '../data/portfolioData';
+import ProjectPreview from './ProjectPreview';
 import ProjectModal from './ProjectModal';
 
-export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [activeModalProject, setActiveModalProject] = useState(null);
+const pad = (n) => String(n).padStart(2, '0');
 
-  const filteredProjects =
-    selectedCategory === 'All'
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === selectedCategory);
+export default function Projects() {
+  const [hovered, setHovered] = useState(0);
+  const [openId, setOpenId] = useState(null);
+
+  const closeModal = useCallback(() => setOpenId(null), []);
+
+  const active = PROJECTS[hovered];
+  const openProject = PROJECTS.find((p) => p.id === openId);
+
+  const open = (index) => {
+    setHovered(index);
+    setOpenId(PROJECTS[index].id);
+  };
 
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-emerald-400 mb-2">
-              <span className="w-6 h-[1px] bg-emerald-400" />
-              <span>01 // Selected Work</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Featured Production Platforms
-            </h2>
-            <p className="text-slate-400 text-sm sm:text-base max-w-xl mt-2">
-              Commercial applications engineered for fintech, e-commerce, and enterprise learning with real user scale.
-            </p>
-          </div>
-
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-1.5 p-1 bg-slate-900/80 rounded-xl border border-slate-800 self-start md:self-auto">
-            {PROJECT_CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
-                  selectedCategory === cat
-                    ? 'bg-emerald-500 text-slate-950 font-semibold shadow-sm'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+    <section id="work" className="mx-auto max-w-[1200px] scroll-mt-20 px-5 pb-[110px] sm:px-7">
+      <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+        <div data-reveal="up" className="flex flex-col gap-3">
+          <span className="eyebrow">01 — Selected work</span>
+          <h2 className="m-0 font-serif text-[clamp(40px,5vw,64px)] font-normal leading-none tracking-[-.02em]">
+            Products in production,
+            <br />
+            <em>built for real users.</em>
+          </h2>
         </div>
-
-        {/* Project Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="glass-card glass-card-hover rounded-2xl overflow-hidden border border-slate-800 flex flex-col group"
-            >
-              {/* Project Screenshot in Browser Frame */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-950 border-b border-slate-800/80">
-                {/* Simulated Browser Chrome Top Bar */}
-                <div className="absolute top-0 left-0 right-0 z-10 px-3 py-2 bg-slate-950/90 backdrop-blur border-b border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-500">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-                    <span className="ml-2 text-slate-400 truncate max-w-[180px] sm:max-w-xs">
-                      {project.title.split('—')[0].trim().toLowerCase()}.app
-                    </span>
-                  </div>
-                  <span className="px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-800 text-[10px]">
-                    {project.category}
-                  </span>
-                </div>
-
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 pt-7"
-                />
-
-                {/* Hover Overlay Button to open Case Study */}
-                <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pt-7">
-                  <button
-                    onClick={() => setActiveModalProject(project)}
-                    className="px-4 py-2 rounded-xl bg-slate-900/90 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-medium shadow-xl hover:bg-emerald-500 hover:text-slate-950 transition-colors flex items-center gap-2"
-                  >
-                    <Layers size={14} />
-                    <span>View Architecture Deep Dive</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
-                  <span>{project.period}</span>
-                  {project.featured && (
-                    <span className="inline-flex items-center gap-1 text-emerald-400 text-[11px]">
-                      <Sparkles size={11} /> Featured
-                    </span>
-                  )}
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
-                  {project.title}
-                </h3>
-
-                <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                  {project.summary}
-                </p>
-
-                {/* Quantified Metric Badge */}
-                <div className="mb-5 p-2.5 rounded-lg bg-emerald-950/30 border border-emerald-500/20 text-xs text-emerald-300 flex items-start gap-2">
-                  <span className="text-emerald-400 font-bold">⚡</span>
-                  <span className="font-mono">{project.metrics}</span>
-                </div>
-
-                {/* Tech Stack Pills */}
-                <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 text-[11px] font-mono rounded-md bg-slate-900 text-slate-300 border border-slate-800"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action Links */}
-                <div className="flex items-center justify-between pt-4 border-t border-slate-800/80">
-                  <button
-                    onClick={() => setActiveModalProject(project)}
-                    className="text-xs font-mono text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors"
-                  >
-                    <span>Case Study & Architecture</span>
-                    <ArrowUpRight size={13} />
-                  </button>
-
-                  <div className="flex items-center gap-3">
-                    {project.links.code && project.links.code !== '#' && (
-                      <a
-                        href={project.links.code}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-slate-400 hover:text-white transition-colors"
-                        aria-label="View Source Code"
-                      >
-                        <Github size={16} />
-                      </a>
-                    )}
-                    {project.links.demo && (
-                      <a
-                        href={project.links.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors"
-                      >
-                        <span>Demo</span>
-                        <ExternalLink size={12} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <p data-reveal="up" data-delay="120" className="max-w-[330px] text-[15px] leading-relaxed text-stone-600 [text-wrap:pretty]">
+          Logistics, e-commerce, fintech and education. Hover a project to preview it; click to read the case study.
+        </p>
       </div>
 
-      {/* Architecture Case Study Modal */}
-      {activeModalProject && (
-        <ProjectModal
-          project={activeModalProject}
-          onClose={() => setActiveModalProject(null)}
-        />
-      )}
+      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-x-14 gap-y-10 lg:grid-cols-2">
+        {/* Sticky preview */}
+        <div className="min-w-0 self-stretch">
+          <div data-reveal="zoom" className="sticky top-[92px] flex min-w-0 flex-col gap-5">
+            <button
+              type="button"
+              onClick={() => open(hovered)}
+              aria-label={`Open ${active.name} case study`}
+              className="relative block aspect-[5/4] max-h-[70vh] w-full cursor-pointer overflow-hidden rounded-[28px] bg-cream-deep shadow-[0_40px_80px_-48px_rgba(28,25,23,.5)]"
+            >
+              {PROJECTS.map((p, i) => (
+                <ProjectPreview key={p.id} project={p} active={i === hovered} />
+              ))}
+              <span className="absolute left-5 top-[18px] z-[3] rounded-full bg-white/80 px-[11px] py-1.5 font-mono text-xs font-medium text-ink backdrop-blur-md">
+                {pad(hovered + 1)} / {pad(PROJECTS.length)}
+              </span>
+              <span className="absolute right-5 top-[18px] z-[3] inline-flex items-center gap-2 rounded-full bg-ink px-3.5 py-2 text-[13px] font-medium text-cream">
+                Case study <span aria-hidden="true">→</span>
+              </span>
+            </button>
+
+            <div className="flex flex-col gap-3 px-1">
+              <p className="flex items-start gap-3 text-[15px] font-medium leading-normal text-orange-900">
+                <span className="text-accent" aria-hidden="true">↗</span>
+                <span className="[text-wrap:pretty]">{active.metrics}</span>
+              </p>
+              <ul className="flex flex-wrap gap-1.5" aria-label="Technologies">
+                {active.tags.map((t) => (
+                  <li key={t} className="chip">{t}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Project list */}
+        <ul className="flex min-w-0 flex-col border-b border-ink/[.14]">
+          {PROJECTS.map((p, i) => {
+            const on = i === hovered;
+            return (
+              <li key={p.id} data-reveal="up" data-delay={i * 70}>
+                <button
+                  type="button"
+                  onClick={() => open(i)}
+                  onMouseEnter={() => setHovered(i)}
+                  onFocus={() => setHovered(i)}
+                  className="relative grid w-full cursor-pointer grid-cols-[28px_minmax(0,1fr)_44px] items-center gap-4 border-t border-ink/[.14] px-1.5 py-[26px] text-left sm:grid-cols-[40px_minmax(0,1fr)_auto_44px] sm:gap-5"
+                >
+                  <span className={`self-start pt-2.5 font-mono text-[12.5px] font-medium transition-colors duration-300 ${on ? 'text-accent' : 'text-stone-400'}`}>
+                    {pad(i + 1)}
+                  </span>
+
+                  <span
+                    className="flex min-w-0 flex-col gap-1.5 transition-transform duration-500 ease-smooth"
+                    style={{ transform: on ? 'translateX(10px)' : 'none' }}
+                  >
+                    <span className="flex flex-wrap items-center gap-2.5">
+                      <span
+                        className={`font-serif text-[clamp(32px,3.6vw,46px)] leading-none tracking-[-.02em] transition-colors duration-300 ${on ? 'italic text-accent' : 'text-ink'}`}
+                      >
+                        {p.name}
+                      </span>
+                      {p.badge && (
+                        <span className="rounded-full border border-accent/35 px-2 py-[3px] font-mono text-[11px] font-medium uppercase tracking-[.06em] text-accent">
+                          {p.badge}
+                        </span>
+                      )}
+                    </span>
+                    <span className="text-[15px] leading-snug text-stone-600">{p.sub}</span>
+                  </span>
+
+                  <span className="hidden flex-col items-end gap-1 text-right font-mono text-[11.5px] font-medium uppercase tracking-[.06em] text-stone-500 sm:flex">
+                    <span>{p.category}</span>
+                    <span className="text-stone-400">{p.period}</span>
+                  </span>
+
+                  <span
+                    aria-hidden="true"
+                    className={`grid h-11 w-11 place-items-center rounded-full border text-[17px] transition-all duration-[450ms] ease-smooth ${
+                      on ? '-rotate-45 border-ink bg-ink text-cream' : 'border-ink/[.18] bg-transparent text-ink'
+                    }`}
+                  >
+                    →
+                  </span>
+
+                  <span
+                    aria-hidden="true"
+                    className="absolute -bottom-px left-0 h-0.5 bg-accent transition-[width] duration-700 ease-smooth"
+                    style={{ width: on ? '100%' : '0%' }}
+                  />
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      {openProject && <ProjectModal project={openProject} onClose={closeModal} />}
     </section>
   );
 }

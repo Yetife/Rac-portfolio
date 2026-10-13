@@ -1,65 +1,20 @@
-import React from 'react';
-import { Zap, ShieldCheck, Layers, Target } from 'lucide-react';
-import { PHILOSOPHIES } from '../data/portfolioData';
+import { PRINCIPLES } from '../data/portfolioData';
 
 export default function EngineeringPhilosophy() {
-  const getIcon = (iconName) => {
-    switch (iconName) {
-      case 'Zap':
-        return <Zap className="text-amber-400" size={24} />;
-      case 'ShieldCheck':
-        return <ShieldCheck className="text-emerald-400" size={24} />;
-      case 'Layers':
-        return <Layers className="text-cyan-400" size={24} />;
-      case 'Target':
-        return <Target className="text-rose-400" size={24} />;
-      default:
-        return <Zap className="text-emerald-400" size={24} />;
-    }
-  };
-
   return (
-    <section id="philosophy" className="py-24 bg-slate-900/30 border-t border-slate-800/60 relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <div className="mb-16">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-emerald-400 mb-2">
-            <span className="w-6 h-[1px] bg-emerald-400" />
-            <span>04 // Principles</span>
+    <section aria-labelledby="how-i-work" className="mx-auto max-w-[1200px] px-5 pb-[110px] pt-10 sm:px-7">
+      <div data-reveal="up" className="mb-10">
+        <h2 id="how-i-work" className="eyebrow m-0">04 — How I work</h2>
+      </div>
+
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,250px),1fr))] gap-x-8 gap-y-10">
+        {PRINCIPLES.map((p, i) => (
+          <div key={p.title} data-reveal="up" data-delay={i * 90} className="flex flex-col gap-3 border-t-2 border-ink pt-5">
+            <span className="font-serif text-[34px] italic leading-none text-accent">0{i + 1}</span>
+            <h3 className="m-0 text-lg font-semibold tracking-[-.01em]">{p.title}</h3>
+            <p className="m-0 text-[14.5px] leading-relaxed text-stone-600 [text-wrap:pretty]">{p.description}</p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            How I Approach Frontend Engineering
-          </h2>
-          <p className="text-slate-400 text-sm sm:text-base max-w-xl mt-2">
-            Senior development goes beyond syntax. It's about designing sustainable frontend architecture that drives measurable outcomes.
-          </p>
-        </div>
-
-        {/* 4 Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {PHILOSOPHIES.map((item, index) => (
-            <div
-              key={index}
-              className="glass-card glass-card-hover rounded-2xl p-6 border border-slate-800 flex flex-col justify-between"
-            >
-              <div>
-                <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 w-fit mb-5">
-                  {getIcon(item.icon)}
-                </div>
-                <h3 className="text-base font-bold text-white mb-2.5">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-
-              <div className="pt-6 mt-6 border-t border-slate-800/60 text-[10px] font-mono text-slate-400 uppercase tracking-wider">
-                Standard // 0{index + 1}
-              </div>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </section>
   );

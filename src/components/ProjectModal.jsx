@@ -1,160 +1,134 @@
-import React, { useEffect } from 'react';
-import { X, ExternalLink, Github, CheckCircle, Cpu, AlertTriangle, TrendingUp } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+
+const hideOnError = (e) => {
+  e.currentTarget.style.visibility = 'hidden';
+};
 
 export default function ProjectModal({ project, onClose }) {
+  const closeRef = useRef(null);
+
+  // Escape to close, lock page scroll, and return focus to the trigger afterwards.
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const previouslyFocused = document.activeElement;
+    const onKey = (e) => {
       if (e.key === 'Escape') onClose();
     };
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    closeRef.current?.focus();
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+      previouslyFocused?.focus?.();
     };
   }, [onClose]);
 
-  if (!project) return null;
+  const isPhones = project.kind === 'phones';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
-      {/* Backdrop */}
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/55 px-4 py-10 backdrop-blur-[6px]"
+    >
       <div
-        className="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity"
-        onClick={onClose}
-      />
-
-      {/* Modal Dialog */}
-      <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl shadow-black/80 z-10 flex flex-col">
-        {/* Header */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-slate-900/95 backdrop-blur border-b border-slate-800">
-          <div className="flex items-center gap-2.5">
-            <span className="px-2.5 py-1 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-xs">
-              {project.category}
-            </span>
-            <span className="text-xs font-mono text-slate-400">{project.period}</span>
-          </div>
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="case-study-title"
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-[820px] overflow-hidden rounded-[28px] bg-cream shadow-[0_40px_100px_-30px_rgba(0,0,0,.5)]"
+      >
+        <div
+          className={`relative overflow-hidden ${isPhones ? 'aspect-video' : 'aspect-[2/1]'}`}
+          style={{ background: isPhones ? project.bg : '#efe8de' }}
+        >
+          {isPhones ? (
+            <div className="absolute inset-0 flex items-end justify-center gap-7 pt-8">
+              {project.phones.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt=""
+                  onError={hideOnError}
+                  className="h-[115%] rounded-[22px] shadow-[0_30px_60px_-30px_rgba(28,25,23,.5)]"
+                  style={{ transform: i === 0 ? 'translateY(12%) rotate(-3deg)' : 'translateY(20%) rotate(3deg)' }}
+                />
+              ))}
+            </div>
+          ) : (
+            <img src={project.image} alt={project.name} onError={hideOnError} className="block h-full w-full object-cover object-top" />
+          )}
           <button
+            ref={closeRef}
+            type="button"
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
-            aria-label="Close Case Study"
+            aria-label="Close case study"
+            className="absolute right-4 top-4 h-[42px] w-[42px] cursor-pointer rounded-full bg-white text-lg text-ink shadow-[0_6px_20px_rgba(0,0,0,.15)]"
           >
-            <X size={20} />
+            ✕
           </button>
         </div>
 
-        {/* Modal Content */}
-        <div className="p-6 sm:p-8 space-y-6">
-          {/* Project Header */}
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{project.title}</h2>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">{project.summary}</p>
-          </div>
-
-          {/* Screenshot Display with Browser Chrome Frame */}
-          <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
-            <div className="px-3 py-2 bg-slate-950 border-b border-slate-800/80 flex items-center gap-2 text-[11px] font-mono text-slate-500">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-              </div>
-              <span className="truncate">{project.links.demo || 'https://production.app'}</span>
-            </div>
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full max-h-72 object-cover object-top"
-            />
-          </div>
-
-          {/* Case Study Breakdown Grid */}
-          <div className="space-y-6 pt-2">
-            {/* The Challenge */}
-            <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80">
-              <div className="flex items-center gap-2 text-rose-400 text-xs font-mono uppercase tracking-wider mb-2 font-semibold">
-                <AlertTriangle size={15} />
-                <span>The Engineering Challenge</span>
-              </div>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                {project.caseStudy.challenge}
-              </p>
-            </div>
-
-            {/* Architecture & Decisions */}
-            <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80">
-              <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-3 font-semibold">
-                <Cpu size={15} />
-                <span>Architectural Solutions & Decisions</span>
-              </div>
-              <ul className="space-y-2.5">
-                {project.caseStudy.architecture.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-slate-300 text-sm leading-relaxed">
-                    <CheckCircle size={16} className="text-emerald-400 shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Measurable Outcome */}
-            <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
-              <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-2 font-semibold">
-                <TrendingUp size={15} />
-                <span>Measurable Impact & Results</span>
-              </div>
-              <p className="text-slate-200 text-sm leading-relaxed font-medium">
-                {project.caseStudy.outcome}
-              </p>
-            </div>
-          </div>
-
-          {/* Tech Stack Pills */}
-          <div>
-            <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2.5">
-              Production Tech Stack
+        <div className="flex flex-col gap-7 px-6 pb-11 pt-9 sm:px-12">
+          <div className="flex flex-col gap-2">
+            <span className="font-mono text-xs font-medium uppercase tracking-[.06em] text-accent">
+              Case study · {project.category} · {project.period}
             </span>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 text-xs font-mono rounded-lg bg-slate-800 text-slate-200 border border-slate-700"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            <h3 id="case-study-title" className="m-0 font-serif text-[clamp(36px,9vw,48px)] font-normal leading-none tracking-[-.02em]">
+              {project.name}
+            </h3>
+            <span className="text-[17px] font-medium text-stone-600">{project.sub}</span>
           </div>
-        </div>
 
-        {/* Footer Actions */}
-        <div className="sticky bottom-0 z-20 px-6 py-4 bg-slate-900/95 backdrop-blur border-t border-slate-800 flex items-center justify-between">
-          <div className="text-xs font-mono text-slate-400 hidden sm:block">
-            Press <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300">Esc</kbd> to close
+          <div className="flex flex-wrap gap-x-7 gap-y-2">
+            <span className="label-mono flex-[1_1_130px] pt-1 text-xs">The challenge</span>
+            <p className="m-0 min-w-0 flex-[3_1_380px] text-base leading-[1.65] text-stone-800">{project.challenge}</p>
           </div>
-          <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-            {project.links.code && project.links.code !== '#' && (
+
+          <div className="flex flex-wrap gap-x-7 gap-y-2">
+            <span className="label-mono flex-[1_1_130px] pt-1 text-xs">What I built</span>
+            <ol className="m-0 flex min-w-0 flex-[3_1_380px] list-decimal flex-col gap-2.5 pl-5 text-[15.5px] leading-relaxed text-stone-800">
+              {project.architecture.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="flex flex-col gap-2 rounded-[20px] bg-ink px-[26px] py-6 text-cream">
+            <span className="font-mono text-xs font-medium uppercase tracking-[.06em] text-orange-300">Outcome</span>
+            <p className="m-0 font-serif text-[26px] leading-[1.25]">{project.outcome}</p>
+          </div>
+
+          <ul className="flex flex-wrap gap-1.5" aria-label="Technologies">
+            {project.tags.map((t) => (
+              <li key={t} className="chip border-ink/[.14]">{t}</li>
+            ))}
+          </ul>
+
+          <div className="flex flex-wrap gap-3">
+            {project.demo && (
               <a
-                href={project.links.code}
+                href={project.demo}
                 target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors"
+                rel="noreferrer"
+                className="rounded-full bg-accent px-[22px] py-[13px] text-[15px] font-medium text-white hover:bg-accent-dark hover:text-white"
               >
-                <Github size={14} />
-                <span>Source Code</span>
+                Visit live site ↗
               </a>
             )}
-            {project.links.demo && (
+            {project.code && (
               <a
-                href={project.links.demo}
+                href={project.code}
                 target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-semibold text-xs shadow-md transition-all hover:scale-[1.02]"
+                rel="noreferrer"
+                className="rounded-full border border-ink/20 px-[22px] py-3 text-[15px] font-medium text-ink hover:border-ink hover:text-ink"
               >
-                <span>Launch Live Demo</span>
-                <ExternalLink size={14} />
+                View code
               </a>
+            )}
+            {project.private && (
+              <span className="px-1 py-3 text-[14.5px] text-stone-500">Private B2B platform. Walkthrough available on request.</span>
             )}
           </div>
         </div>

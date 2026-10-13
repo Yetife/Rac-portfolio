@@ -4,33 +4,38 @@ export default {
     "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        slate: {
-          850: '#111827',
-          925: '#0b0f19',
-          950: '#030712',
+        cream: {
+          DEFAULT: '#f7f3ed',
+          soft: '#fbf9f5',
+          deep: '#e9e1d6',
         },
-        emerald: {
-          450: '#059669',
-        }
+        ink: '#1c1917',
+        accent: {
+          DEFAULT: '#c2410c',
+          dark: '#9a3412',
+        },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['Geist', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
       },
-      animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(.2,.7,.2,1)',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        }
-      }
+        pulseRing: {
+          '0%': { boxShadow: '0 0 0 0 rgba(194,65,12,.45)' },
+          '70%': { boxShadow: '0 0 0 8px rgba(194,65,12,0)' },
+          '100%': { boxShadow: '0 0 0 0 rgba(194,65,12,0)' },
+        },
+      },
+      animation: {
+        'pulse-ring': 'pulseRing 2s infinite',
+      },
     },
   },
   plugins: [],
