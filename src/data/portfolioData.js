@@ -261,10 +261,10 @@ export const EXPERIENCE = [
   {
     role: "Junior Frontend Engineer",
     company: "Semicolon Africa",
-    period: "January 2022 — November 2023",
+    period: "January 2022 — October 2023",
     location: "Lagos, Nigeria",
     type: "Full-Time",
-    highlight: "Joined from the Semicolon software engineering programme. Stayed on for my first two months at Creditwave before moving over fully.",
+    highlight: "Joined from the Semicolon software engineering programme. Stayed on through my first month at Creditwave before moving over fully.",
     responsibilities: [
       "Participated in sprint planning, code reviews, debugging, and feature delivery, contributing to a 15% reduction in project timelines.",
       "Built event-based calendar and engagement features and supported production debugging, contributing to a 25% reduction in production issues.",
