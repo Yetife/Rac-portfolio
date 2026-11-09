@@ -51,7 +51,7 @@ export default function ProjectModal({ project, onClose }) {
                   src={src}
                   alt=""
                   onError={hideOnError}
-                  className="h-[115%] rounded-[22px] shadow-[0_30px_60px_-30px_rgba(28,25,23,.5)]"
+                  className="h-auto w-[80%] object-contain rounded-[22px] shadow-[0_30px_60px_-30px_rgba(28,25,23,.5)]"
                   style={{ transform: i === 0 ? 'translateY(12%) rotate(-3deg)' : 'translateY(20%) rotate(3deg)' }}
                 />
               ))}
@@ -128,7 +128,7 @@ export default function ProjectModal({ project, onClose }) {
               </a>
             )}
             {project.private && (
-              <span className="px-1 py-3 text-[14.5px] text-stone-500">Private B2B platform. Walkthrough available on request.</span>
+              <span className="px-1 py-3 text-[14.5px] text-muted">Private B2B platform. Walkthrough available on request.</span>
             )}
           </div>
         </div>

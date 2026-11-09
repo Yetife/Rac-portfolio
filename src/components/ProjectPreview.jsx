@@ -29,7 +29,7 @@ export default function ProjectPreview({ project, active }) {
               loading="lazy"
               decoding="async"
               onError={hideOnError}
-              className="h-[92%] rounded-3xl shadow-[0_30px_60px_-28px_rgba(28,25,23,.55)]"
+              className="h-auto max-h-[92%] w-full object-contain rounded-3xl shadow-[0_30px_60px_-28px_rgba(28,25,23,.55)]"
               style={{
                 transform: i === 0
                   ? `translateY(${active ? 10 : 22}%) rotate(-4deg)`
@@ -48,7 +48,7 @@ export default function ProjectPreview({ project, active }) {
             <span className="h-2 w-2 rounded-full bg-[#e2b4a0]" />
             <span className="h-2 w-2 rounded-full bg-[#e8d29c]" />
             <span className="h-2 w-2 rounded-full bg-[#b9cfae]" />
-            <span className="ml-2.5 truncate font-mono text-[10.5px] text-stone-500">{project.url}</span>
+            <span className="ml-2.5 truncate font-mono text-[10.5px] text-muted">{project.url}</span>
           </div>
           <img
             src={project.image}

@@ -8,7 +8,7 @@ export default function ImpactMetrics() {
           <div key={m.label} data-reveal="up" data-delay={i * 90} className="flex flex-col gap-2 py-[30px] pr-6">
             <span className="font-serif text-5xl leading-none tracking-[-.02em]">{m.metric}</span>
             <span className="text-[14.5px] font-semibold">{m.label}</span>
-            <span className="text-sm leading-[1.55] text-stone-500 [text-wrap:pretty]">{m.description}</span>
+            <span className="text-sm leading-[1.55] text-muted [text-wrap:pretty]">{m.description}</span>
           </div>
         ))}
       </div>

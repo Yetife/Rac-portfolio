@@ -6,7 +6,7 @@ export default function SkillsMatrix() {
       <div data-reveal="up" className="mb-11 flex flex-col gap-3">
         <span className="eyebrow">03 — Skills</span>
         <h2 className="m-0 font-serif text-[clamp(40px,5vw,60px)] font-normal leading-none tracking-[-.02em]">The toolkit.</h2>
-        <p className="m-0 flex items-center gap-2 text-[13.5px] text-stone-500">
+        <p className="m-0 flex items-center gap-2 text-[13.5px] text-muted">
           <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" /> Used daily in production
         </p>
       </div>
@@ -21,7 +21,7 @@ export default function SkillsMatrix() {
           >
             <div className="flex flex-col gap-1.5">
               <h3 className="m-0 text-[17px] font-semibold tracking-[-.01em]">{group.category}</h3>
-              <p className="m-0 text-[13.5px] leading-normal text-stone-500">{group.description}</p>
+              <p className="m-0 text-[13.5px] leading-normal text-muted">{group.description}</p>
             </div>
             <ul className="flex flex-col">
               {group.skills.map(([name, highlighted]) => (

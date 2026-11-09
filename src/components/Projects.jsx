@@ -12,11 +12,17 @@ const idFromHash = () => {
 };
 
 export default function Projects() {
-  const [hovered, setHovered] = useState(() => Math.max(0, PROJECTS.findIndex((p) => p.id === idFromHash())));
-  const [openId, setOpenId] = useState(idFromHash);
+  // Start closed so the client's first render matches the pre-rendered HTML; read the hash after hydration.
+  const [hovered, setHovered] = useState(0);
+  const [openId, setOpenId] = useState(null);
 
   useEffect(() => {
-    const onHash = () => setOpenId(idFromHash());
+    const onHash = () => {
+      const id = idFromHash();
+      setOpenId(id);
+      if (id) setHovered(PROJECTS.findIndex((p) => p.id === id));
+    };
+    onHash();
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
@@ -73,7 +79,7 @@ export default function Projects() {
                   )}
                 </span>
                 <span className="text-[15px] text-stone-600">{p.sub}</span>
-                <span className="font-mono text-[11.5px] font-medium uppercase tracking-[.06em] text-stone-500">
+                <span className="font-mono text-[11.5px] font-medium uppercase tracking-[.06em] text-muted">
                   {p.category} · {p.period}
                 </span>
                 <span className="mt-1.5 text-[14.5px] font-medium leading-normal text-orange-900 [text-wrap:pretty]">{p.metrics}</span>
@@ -134,7 +140,7 @@ export default function Projects() {
                   onFocus={() => setHovered(i)}
                   className="relative grid w-full cursor-pointer grid-cols-[28px_minmax(0,1fr)_44px] items-center gap-4 border-t border-ink/[.14] px-1.5 py-[26px] text-left sm:grid-cols-[40px_minmax(0,1fr)_auto_44px] sm:gap-5"
                 >
-                  <span className={`self-start pt-2.5 font-mono text-[12.5px] font-medium transition-colors duration-300 ${on ? 'text-accent' : 'text-stone-400'}`}>
+                  <span className={`self-start pt-2.5 font-mono text-[12.5px] font-medium transition-colors duration-300 ${on ? 'text-accent' : 'text-muted'}`}>
                     {pad(i + 1)}
                   </span>
 
@@ -157,9 +163,9 @@ export default function Projects() {
                     <span className="text-[15px] leading-snug text-stone-600">{p.sub}</span>
                   </span>
 
-                  <span className="hidden flex-col items-end gap-1 text-right font-mono text-[11.5px] font-medium uppercase tracking-[.06em] text-stone-500 sm:flex">
+                  <span className="hidden flex-col items-end gap-1 text-right font-mono text-[11.5px] font-medium uppercase tracking-[.06em] text-muted sm:flex">
                     <span>{p.category}</span>
-                    <span className="text-stone-400">{p.period}</span>
+                    <span className="text-muted">{p.period}</span>
                   </span>
 
                   <span

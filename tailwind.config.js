@@ -13,6 +13,8 @@ export default {
           deep: '#e9e1d6',
         },
         ink: '#1c1917',
+        // Secondary text: 5.2:1 on cream (stone-500 is 4.34:1 and fails WCAG AA for small text)
+        muted: '#6b6560',
         accent: {
           DEFAULT: '#c2410c',
           dark: '#9a3412',

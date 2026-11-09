@@ -28,7 +28,7 @@ export const PERSONAL_INFO = {
   linkedin: "https://www.linkedin.com/in/yetunde-olasehinde",
   linkedinHandle: "yetunde-olasehinde",
   avatar: "/assets/portrait-696.webp",
-  avatarSrcSet: "/assets/portrait-400.webp 400w, /assets/portrait-696.webp 696w",
+  avatarSrcSet: "/assets/portrait-300.webp 300w, /assets/portrait-400.webp 400w, /assets/portrait-500.webp 500w, /assets/portrait-600.webp 600w, /assets/portrait-696.webp 696w",
   resumeUrl: "/resume.pdf",
 };
 

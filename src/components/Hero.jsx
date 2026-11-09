@@ -9,7 +9,7 @@ export default function Hero() {
             <span className="h-2 w-2 rounded-full bg-accent animate-pulse-ring" aria-hidden="true" />
             {PERSONAL_INFO.availability}
           </span>
-          <span className="text-stone-500">{PERSONAL_INFO.workMode}</span>
+          <span className="text-muted">{PERSONAL_INFO.workMode}</span>
         </div>
 
         <h1
