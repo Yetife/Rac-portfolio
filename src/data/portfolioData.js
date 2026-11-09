@@ -12,7 +12,7 @@ export const PERSONAL_INFO = {
   lastName: "Olasehinde",
   name: "Yetunde Olasehinde",
   initials: "Yo",
-  headline: "Frontend Engineer building fast, accessible products for fintech and AI commerce.",
+  headline: "Frontend engineer who makes products fast on real networks, from a 20 MB logistics app cut to 1.2 MB, to AI shopping flows that lifted conversion 20%.",
   intro: "4+ years shipping production React, Next.js and TypeScript. I architect checkout flows, streaming AI shopping assistants and fault-tolerant loan applications that hold up on real-world networks.",
   availability: "Available for full-time & contract roles",
   workMode: "Remote / Hybrid",
@@ -85,13 +85,13 @@ export const PROJECTS = [
     metrics: "Frontend latency work on the AI shopping assistant helped lift search-to-cart conversion by 20%.",
     demo: "https://getkuve.com/",
     code: "",
-    challenge: "The legacy checkout process suffered from severe render thrashing caused by multi-level prop drilling across complex item variations, inline address edits, and live stock queries.",
+    challenge: "Cart, delivery location and the Lisa AI chat all shared state passed down through many component layers, so product variations, address edits and live stock checks made checkout sluggish and hard to change.",
     architecture: [
       "Architected modular Zustand store slices decoupling shopping cart, delivery location, and Lisa AI chat interactions.",
       "Engineered real-time optimistic UI updates for instant cart modification feedback before server reconciliation.",
       "Integrated the Lisa AI conversational interface with structured JSON schema streaming for real-time recommendation cards.",
     ],
-    outcome: "Search-to-cart conversion rose 20%, and moving checkout state into Zustand cut redundant re-renders by around 60%.",
+    outcome: "Frontend latency improvements on discovery and the AI shopping assistant contributed to a 20% rise in search-to-cart conversion.",
   },
   {
     id: "solar",
@@ -118,15 +118,15 @@ export const PROJECTS = [
   {
     id: "enum",
     name: "Enum",
-    sub: "Enterprise Learning & Talent Platform",
+    sub: "Learning & Talent Platform, built at Semicolon Africa",
     category: "EdTech & LMS",
-    period: "Production Platform",
+    period: "Semicolon · 2022 — 2023",
     kind: "shot",
     image: enumImg,
     url: "enum.africa",
     bg: "#d8e0e8",
-    tags: ["React", "TypeScript", "Redux Toolkit", "Tailwind CSS", "Enterprise Architecture"],
-    metrics: "Empowering thousands of learners and evaluators across Africa with instant assessment feedback.",
+    tags: ["React", "TypeScript", "Redux Toolkit", "Tailwind CSS", "Autosave"],
+    metrics: "Semicolon Africa's LMS for timed coding tests, quizzes and interviewer scoring, built to survive spotty connections.",
     demo: "https://enum.africa",
     code: "",
     challenge: "Managing complex nested assessment state (timed coding tests, multi-stage quizzes, and synchronous interviewer scoring) without data loss on spotty internet connections.",
@@ -135,7 +135,7 @@ export const PROJECTS = [
       "Built modular, accessible UI component kit enforcing standardized design tokens across the candidate portal.",
       "Created an event-driven timer and autosave engine ensuring candidate responses sync seamlessly with minimal network overhead.",
     ],
-    outcome: "Successfully supported thousands of concurrent candidate assessments with zero reported data loss incidents during network interruptions.",
+    outcome: "Candidates can take timed assessments that recover from dropped connections without losing their answers.",
   },
   {
     id: "semicolon",
@@ -170,10 +170,10 @@ export const EXPERIENCE = [
     type: "Full-Time",
     highlight: "",
     responsibilities: [
+      "Audited mobile performance under throttled 3G/4G conditions, identifying uncompressed images of 2–5 MB and page loads exceeding 11 minutes on Slow 4G. Reduced the logo asset from 552 kB to 40 kB and total page weight from approximately 20 MB to 1.2 MB through WebP/AVIF conversion, responsive images, and lazy loading.",
       "Leading frontend redesign for Emax Logistics web platform — rebuilding authentication, dashboard, and workspace interfaces in React and TypeScript to improve load performance and UI consistency across devices.",
       "Redesigned LPMS shared component library, authentication screens, main dashboard, and workspace pages to improve UI consistency and maintainability.",
       "Developed frontend features for the Dispatch application, contributing to the company's broader product portfolio.",
-      "Audited mobile performance under throttled 3G/4G conditions, identifying uncompressed images of 2–5 MB and page loads exceeding 11 minutes on Slow 4G. Reduced the logo asset from 552 kB to 40 kB and total page weight from approximately 20 MB to 1.2 MB through WebP/AVIF conversion, responsive images, and lazy loading.",
     ],
     technologies: ["React", "TypeScript", "Component Library", "WebP / AVIF", "Lazy Loading", "Performance Auditing"],
   },
@@ -186,9 +186,9 @@ export const EXPERIENCE = [
     highlight: "Built discovery, AI shopping assistant and checkout flows; contributed to a 20% lift in search-to-cart conversion",
     responsibilities: [
       "Built and shipped user journeys spanning product catalogues, Lisa AI shopping assistant, and checkout using Next.js, TypeScript, and Tailwind CSS.",
-      "Drove the state migration from prop-drilling to isolated Zustand stores, reducing redundant re-renders by 60%.",
+      "Moved shared state from prop drilling into isolated Zustand stores, cutting unnecessary re-renders and making checkout easier to extend.",
       "Collaborated closely with AI engineers and product designers to build responsive, streaming conversational interfaces with graceful fallback handling.",
-      "Conducted rigorous code reviews, established linting/formatting standards, and ensured 100% adherence to mobile-first responsive guidelines.",
+      "Took part in code reviews and frontend architecture decisions, and helped set linting/formatting standards and mobile-first guidelines.",
     ],
     technologies: ["Next.js", "TypeScript", "React", "Zustand", "Tailwind CSS", "RESTful APIs"],
   },
@@ -216,10 +216,10 @@ export const EXPERIENCE = [
     type: "Full-Time",
     highlight: "Joined from the Semicolon software engineering programme. Stayed on for my first two months at Creditwave before moving over fully.",
     responsibilities: [
-      "Built and maintained web applications with React.js, Vue.js, and TypeScript, delivering responsive interfaces from product requirements and Figma specifications.",
-      "Created modular, reusable components and integrated REST APIs using Axios to support dynamic application features.",
       "Participated in sprint planning, code reviews, debugging, and feature delivery, contributing to a 15% reduction in project timelines.",
       "Built event-based calendar and engagement features and supported production debugging, contributing to a 25% reduction in production issues.",
+      "Built and maintained web applications with React.js, Vue.js, and TypeScript, delivering responsive interfaces from product requirements and Figma specifications.",
+      "Created modular, reusable components and integrated REST APIs using Axios to support dynamic application features.",
     ],
     technologies: ["React", "Vue.js", "TypeScript", "Axios", "REST APIs", "Figma"],
   },
@@ -232,6 +232,14 @@ export const SKILLS = [
   { category: "Styling & Design Systems", description: "Pixel-perfect, accessible, responsive", skills: [["Tailwind CSS", true], ["Design Tokens", true], ["Accessibility (WCAG 2.1)", true], ["Sass / SCSS", false], ["Responsive Layouts", false], ["Micro-Animations", false]] },
   { category: "Performance & Quality", description: "Fast code that scales in production", skills: [["Core Web Vitals", true], ["Code Splitting & Bundling", true], ["Chrome DevTools Profiling", true], ["Git / CI/CD Workflows", false], ["Jest & React Testing Library", false], ["Cypress", false], ["Agile / Scrum Delivery", false]] },
 ];
+
+export const ABOUT = {
+  heading: "From Human Kinetics to frontend engineering.",
+  body: [
+    "I studied Human Kinetics at the University of Lagos, then retrained through Semicolon Africa's software engineering programme. Since then I've built LMS, fintech, e-commerce and logistics products used on real Nigerian networks, where slow 3G is the norm, not the edge case.",
+    "That's why I care about performance: a fast interface is one more person who can actually use the product.",
+  ],
+};
 
 export const PRINCIPLES = [
   { title: "Performance by Default", description: "A fast UI is a respectful UI. I optimize Core Web Vitals, minimize render cascades, and eliminate layout thrashing so experiences feel instantaneous." },

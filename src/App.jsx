@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ImpactMetrics from './components/ImpactMetrics';
+import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import SkillsMatrix from './components/SkillsMatrix';
@@ -19,6 +20,7 @@ export default function App() {
       <main id="top">
         <Hero />
         <ImpactMetrics />
+        <About />
         <Projects />
         <Experience />
         <SkillsMatrix />

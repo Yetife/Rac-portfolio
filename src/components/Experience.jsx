@@ -1,4 +1,62 @@
+import { useState } from 'react';
 import { EXPERIENCE, PERSONAL_INFO } from '../data/portfolioData';
+
+const VISIBLE = 2;
+
+// Bold the measurable parts of a bullet (percentages, sizes, durations) so skimmers catch them.
+const METRIC = /(d+(?:[.–]d+)?s?(?:%|kB|MB|minutes))/;
+function withMetrics(text) {
+  return text.split(METRIC).map((part, i) =>
+    i % 2 ? <strong key={i} className="font-semibold text-cream">{part}</strong> : part
+  );
+}
+
+function Job({ job }) {
+  const [expanded, setExpanded] = useState(false);
+  const hidden = job.responsibilities.length - VISIBLE;
+  const shown = expanded ? job.responsibilities : job.responsibilities.slice(0, VISIBLE);
+
+  return (
+    <li data-reveal="up" className="flex flex-wrap gap-x-8 gap-y-3 border-t border-cream/[.14] py-[34px]">
+      <div className="flex flex-[1_1_140px] flex-col gap-1.5">
+        <span className="font-mono text-[13px] font-medium text-stone-300">{job.period}</span>
+        <span className="text-[13px] text-stone-400">
+          {job.type} · {job.location}
+        </span>
+      </div>
+
+      <div className="flex min-w-0 flex-[3_1_400px] flex-col gap-3.5">
+        <div>
+          <h3 className="m-0 text-[21px] font-semibold tracking-[-.01em]">{job.role}</h3>
+          <div className="font-serif text-[22px] italic text-orange-300">{job.company}</div>
+        </div>
+        {job.highlight && <p className="m-0 text-[15.5px] leading-[1.55] text-stone-200">{withMetrics(job.highlight)}</p>}
+        <ul className="m-0 flex list-disc flex-col gap-2 pl-[18px] text-[14.5px] leading-relaxed text-stone-400">
+          {shown.map((r) => (
+            <li key={r}>{withMetrics(r)}</li>
+          ))}
+        </ul>
+        {hidden > 0 && (
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            aria-expanded={expanded}
+            className="min-h-[44px] cursor-pointer self-start text-[14px] font-medium text-orange-300 hover:text-white"
+          >
+            {expanded ? 'Show less ↑' : `Show ${hidden} more ↓`}
+          </button>
+        )}
+        <ul className="flex flex-wrap gap-1.5" aria-label="Technologies">
+          {job.technologies.map((t) => (
+            <li key={t} className="rounded-full bg-cream/[.08] px-2.5 py-1 text-[12.5px] text-stone-200">
+              {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
+  );
+}
 
 export default function Experience() {
   return (
@@ -26,38 +84,7 @@ export default function Experience() {
 
         <ol className="flex min-w-0 flex-[2_1_560px] flex-col">
           {EXPERIENCE.map((job) => (
-            <li
-              key={`${job.company}-${job.period}`}
-              data-reveal="up"
-              className="flex flex-wrap gap-x-8 gap-y-3 border-t border-cream/[.14] py-[34px]"
-            >
-              <div className="flex flex-[1_1_140px] flex-col gap-1.5">
-                <span className="font-mono text-[13px] font-medium text-stone-300">{job.period}</span>
-                <span className="text-[13px] text-stone-400">
-                  {job.type} · {job.location}
-                </span>
-              </div>
-
-              <div className="flex min-w-0 flex-[3_1_400px] flex-col gap-3.5">
-                <div>
-                  <h3 className="m-0 text-[21px] font-semibold tracking-[-.01em]">{job.role}</h3>
-                  <div className="font-serif text-[22px] italic text-orange-300">{job.company}</div>
-                </div>
-                {job.highlight && <p className="m-0 text-[15.5px] leading-[1.55] text-stone-200">{job.highlight}</p>}
-                <ul className="m-0 flex list-disc flex-col gap-2 pl-[18px] text-[14.5px] leading-relaxed text-stone-400">
-                  {job.responsibilities.map((r) => (
-                    <li key={r}>{r}</li>
-                  ))}
-                </ul>
-                <ul className="flex flex-wrap gap-1.5" aria-label="Technologies">
-                  {job.technologies.map((t) => (
-                    <li key={t} className="rounded-full bg-cream/[.08] px-2.5 py-1 text-[12.5px] text-stone-200">
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
+            <Job key={`${job.company}-${job.period}`} job={job} />
           ))}
         </ol>
       </div>
