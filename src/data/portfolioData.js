@@ -241,9 +241,30 @@ export const ABOUT = {
   ],
 };
 
+// Each principle is backed by a real example from the work above (all figures are on the résumé).
 export const PRINCIPLES = [
-  { title: "Performance by Default", description: "A fast UI is a respectful UI. I optimize Core Web Vitals, minimize render cascades, and eliminate layout thrashing so experiences feel instantaneous." },
-  { title: "Accessibility is Non-Negotiable", description: "Software should be usable by everyone. Semantic HTML, keyboard accessibility, ARIA compliance, and high contrast are foundational, not an afterthought." },
-  { title: "Clean, Scalable Architecture", description: "Code is read far more often than it is written. I structure components into atomic, testable units with predictable state boundaries that squads can scale." },
-  { title: "Empathy & Business Outcomes", description: "The best engineers understand product metrics and user journeys. Every line of code exists to solve a real human and business problem." },
+  {
+    title: "Measure on the networks people actually use",
+    description: "I test on throttled 3G/4G, not office Wi-Fi, because that is how most of my users arrive.",
+    source: "Emax Logistics",
+    proof: "A throttled audit showed pages taking over 11 minutes on Slow 4G. Converting to WebP/AVIF, serving responsive images and lazy loading took the page from about 20 MB to 1.2 MB, and the logo from 552 kB to 40 kB.",
+  },
+  {
+    title: "Design for the visitor who doesn't know what to buy",
+    description: "Fast isn't enough if people still get lost. I build entry points around the question users actually have.",
+    source: "Emax Solar Store",
+    proof: "Most shoppers land from Meta ads on a phone. Instead of a catalogue, the store opens with \"what are you powering?\" and shortlists a kit for a home, a shop or a street, with a chat-to-an-expert option alongside search.",
+  },
+  {
+    title: "Give state clear boundaries",
+    description: "When unrelated features share state, every change gets risky. I keep each concern in its own store.",
+    source: "Kuve",
+    proof: "Cart, delivery location and the Lisa AI chat were passing state through many component layers. Moving them into separate Zustand stores cut unnecessary re-renders and made checkout easier to change.",
+  },
+  {
+    title: "Tie frontend work to a number the business cares about",
+    description: "Speed and polish matter most when they move something the product team tracks.",
+    source: "Kuve · Creditwave",
+    proof: "Latency improvements on Kuve's discovery and AI shopping flows contributed to a 20% rise in search-to-cart conversion. At Creditwave, my REST API integration work for loan, savings and transaction flows contributed to 25% faster data retrieval.",
+  },
 ];
