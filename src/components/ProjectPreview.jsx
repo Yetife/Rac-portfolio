@@ -1,3 +1,5 @@
+import ScreensComingSoon from './ScreensComingSoon';
+
 const EASE = 'cubic-bezier(.2,.7,.2,1)';
 
 // Hides an image whose file hasn't been added yet, leaving the tinted backdrop.
@@ -19,7 +21,9 @@ export default function ProjectPreview({ project, active }) {
         zIndex: active ? 2 : 1,
       }}
     >
-      {project.kind === 'phones' ? (
+      {project.kind === 'phones' && project.phones.length === 0 ? (
+        <ScreensComingSoon project={project} />
+      ) : project.kind === 'phones' ? (
         <div className="absolute inset-0 flex items-end justify-center gap-[4%] px-[10%]">
           {project.phones.map((src, i) => (
             <img
@@ -29,7 +33,7 @@ export default function ProjectPreview({ project, active }) {
               loading="lazy"
               decoding="async"
               onError={hideOnError}
-              className="h-auto max-h-[92%] w-full object-contain rounded-3xl shadow-[0_30px_60px_-28px_rgba(28,25,23,.55)]"
+              className={`${project.phones.length > 1 ? 'h-[92%] w-auto max-w-none' : 'h-auto max-h-[92%] w-full object-contain'} rounded-3xl shadow-[0_30px_60px_-28px_rgba(28,25,23,.55)]`}
               style={{
                 transform: i === 0
                   ? `translateY(${active ? 10 : 22}%) rotate(-4deg)`

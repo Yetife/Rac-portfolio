@@ -70,7 +70,7 @@ export default function Experience() {
             <em className="text-orange-300">shipping products.</em>
           </h2>
           <p className="max-w-[340px] text-[15.5px] leading-relaxed text-stone-400">
-            From Semicolon's engineering programme to leading a frontend redesign at Emax Logistics.
+            From Semicolon's engineering programme to frontend work across web and mobile at Emax Innovation & Technology.
           </p>
           <a
             href={PERSONAL_INFO.resumeUrl}

@@ -5,6 +5,8 @@ const enumImg = `${IMG}/enum.webp`;
 const semicolonImg = `${IMG}/semicolon.webp`;
 const SOLAR_IMG = `${IMG}/solar.webp`;
 const EMAX_HOME = `${IMG}/emax-home.webp`;
+const TAPCARD = [`${IMG}/tapcard-home.webp`, `${IMG}/tapcard-profile.webp`];
+const INVOICE = [`${IMG}/invoice-home.webp`, `${IMG}/invoice-reports.webp`];
 // To show a second phone, add /public/assets/projects/emax-detail.webp and append it to E-Max "phones".
 
 export const PERSONAL_INFO = {
@@ -35,7 +37,7 @@ export const PERSONAL_INFO = {
 export const HERO_FACTS = [
   { label: "Based in", value: "Lagos · UTC+1" },
   { label: "Core stack", value: "React · Next · TS" },
-  { label: "Currently", value: "Emax Logistics" },
+  { label: "Currently", value: "Emax Innovation & Technology" },
 ];
 
 export const IMPACT_METRICS = [
@@ -62,7 +64,7 @@ export const PROJECTS = [
     metrics: "One shared workspace per vendor–logistics partnership, replacing WhatsApp threads for inventory, dispatch and chat.",
     demo: "",
     code: "",
-    private: true,
+    note: "Private B2B platform. Walkthrough available on request.",
     challenge: "Two kinds of organisation, vendors and logistics companies, work inside the same partnership with different roles and permissions. Dispatch has to follow a strict pipeline from Created to Delivered, and riders often work on weak mobile signal.",
     architecture: [
       "Leading the frontend redesign in Next.js and TypeScript with Tailwind CSS, sharing one design language across the web dashboard and the rider/dispatcher mobile app.",
@@ -70,6 +72,53 @@ export const PROJECTS = [
       "Designed the dispatch flow end to end: claim, pick up, in transit, and delivery with photo proof or a reported failure reason.",
     ],
     outcome: "Vendors and logistics partners run the whole relationship, from inventory to proof of delivery, in one place.",
+  },
+  {
+    id: "tapcard",
+    name: "TapCard",
+    sub: "NFC Digital Business Card · Web + Mobile",
+    category: "Mobile & Web",
+    period: "2026",
+    badge: "New",
+    kind: "phones",
+    phones: TAPCARD,
+    bg: "#e4dccf",
+    tags: ["React Native", "Expo", "Next.js", "TypeScript", "NFC"],
+    metrics: "Tap the card on any phone and a profile opens with name, number, bank details and links. No app to install.",
+    demo: "https://tap.useemax.com/",
+    code: "",
+    note: "Built at Emax Innovation & Technology. The mobile app is not yet published in the app stores.",
+    challenge: "Cardholders manage their profile in a mobile app and on the web, while the people they tap only ever see a public web page. All three had to feel like one product, and profile editing had to stay usable on Android phones with the keyboard open.",
+    architecture: [
+      "Frontend developer on the product. Built the TapCard mobile app in Expo (React Native) and TypeScript: landing and onboarding screens, Google sign-in, profile editing with photo uploads, and a live preview of the public page.",
+      "Redesigned the web app to match the mobile design, so cardholders get the same experience on both.",
+      "Added a setup checklist on the web dashboard that guides new users until their profile is live, and keyboard-safe forms and tabs on mobile.",
+    ],
+    outcome: "The web app is live at tap.useemax.com. The mobile app is built and awaiting its app-store release.",
+  },
+  {
+    id: "invoice",
+    name: "Emax Invoice",
+    sub: "Invoicing App for Nigerian Businesses",
+    category: "Mobile · Fintech",
+    period: "2026",
+    badge: "New",
+    kind: "phones",
+    phones: INVOICE,
+    bg: "#e6d3c3",
+    tags: ["React Native", "Expo", "TypeScript", "TanStack Query", "Offline-first"],
+    metrics: "Create an invoice, send it on WhatsApp or email as a link or PDF, and track who has paid, even on a weak connection.",
+    demo: "https://invoice.useemax.com/",
+    code: "",
+    note: "Built at Emax Innovation & Technology. The mobile app is not yet published in the app stores.",
+    challenge: "Small business owners invoice from their phones, often on patchy mobile data. Losing a half-written invoice, or a screen that will not load, can mean a lost sale.",
+    architecture: [
+      "Frontend developer on the Android and iPhone app, built in Expo (React Native) and TypeScript.",
+      "Made the app work offline: a persisted TanStack Query cache keeps data on screen without a connection, and invoice drafts autosave as you type.",
+      "Built the screens for getting paid (payment links, receipts per payment, reminders), recurring invoices, team management, and reports with CSV export, plus push notifications.",
+      "Kept forms and bottom sheets usable with the keyboard open on edge-to-edge Android, and worked through design and UX fixes from product reviews.",
+    ],
+    outcome: "Live on the web at invoice.useemax.com. The mobile app is built and awaiting its app-store release.",
   },
   {
     id: "kuve",
@@ -164,18 +213,19 @@ export const PROJECTS = [
 export const EXPERIENCE = [
   {
     role: "Frontend Engineer",
-    company: "Emax Logistics",
+    company: "Emax Innovation & Technology",
     period: "August 2026 — Present",
     location: "Lagos, Nigeria",
     type: "Full-Time",
     highlight: "",
     responsibilities: [
       "Audited mobile performance under throttled 3G/4G conditions, identifying uncompressed images of 2–5 MB and page loads exceeding 11 minutes on Slow 4G. Reduced the logo asset from 552 kB to 40 kB and total page weight from approximately 20 MB to 1.2 MB through WebP/AVIF conversion, responsive images, and lazy loading.",
-      "Leading frontend redesign for Emax Logistics web platform — rebuilding authentication, dashboard, and workspace interfaces in React and TypeScript to improve load performance and UI consistency across devices.",
+      "Frontend developer on TapCard (an NFC business card with a web app and an Expo mobile app) and Emax Invoice (an offline-first invoicing app for Android and iPhone).",
+      "Leading frontend redesign for the Emax Logistics web platform — rebuilding authentication, dashboard, and workspace interfaces in React and TypeScript to improve load performance and UI consistency across devices.",
       "Redesigned LPMS shared component library, authentication screens, main dashboard, and workspace pages to improve UI consistency and maintainability.",
       "Developed frontend features for the Dispatch application, contributing to the company's broader product portfolio.",
     ],
-    technologies: ["React", "TypeScript", "Component Library", "WebP / AVIF", "Lazy Loading", "Performance Auditing"],
+    technologies: ["React", "React Native", "Expo", "TypeScript", "Next.js", "Component Library", "Performance Auditing"],
   },
   {
     role: "Frontend Engineer",

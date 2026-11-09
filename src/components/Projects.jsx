@@ -53,7 +53,7 @@ export default function Projects() {
           </h2>
         </div>
         <p data-reveal="up" data-delay="120" className="max-w-[330px] text-[15px] leading-relaxed text-stone-600 [text-wrap:pretty]">
-          Logistics, e-commerce, fintech and education. <span className="hidden lg:inline">Hover a project to preview it; click to read the case study.</span>
+          Logistics, fintech, e-commerce and education, on web and mobile. <span className="hidden lg:inline">Hover a project to preview it; click to read the case study.</span>
           <span className="lg:hidden">Tap a project to read the case study.</span>
         </p>
       </div>

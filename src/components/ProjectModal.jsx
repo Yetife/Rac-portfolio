@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import ScreensComingSoon from './ScreensComingSoon';
 
 const hideOnError = (e) => {
   e.currentTarget.style.visibility = 'hidden';
@@ -43,7 +44,9 @@ export default function ProjectModal({ project, onClose }) {
           className={`relative overflow-hidden ${isPhones ? 'aspect-video' : 'aspect-[2/1]'}`}
           style={{ background: isPhones ? project.bg : '#efe8de' }}
         >
-          {isPhones ? (
+          {isPhones && project.phones.length === 0 ? (
+            <ScreensComingSoon project={project} />
+          ) : isPhones ? (
             <div className="absolute inset-0 flex items-end justify-center gap-7 pt-8">
               {project.phones.map((src, i) => (
                 <img
@@ -51,7 +54,7 @@ export default function ProjectModal({ project, onClose }) {
                   src={src}
                   alt=""
                   onError={hideOnError}
-                  className="h-auto w-[80%] object-contain rounded-[22px] shadow-[0_30px_60px_-30px_rgba(28,25,23,.5)]"
+                  className={`${project.phones.length > 1 ? 'h-[115%] w-auto max-w-none' : 'h-auto w-[80%] object-contain'} rounded-[22px] shadow-[0_30px_60px_-30px_rgba(28,25,23,.5)]`}
                   style={{ transform: i === 0 ? 'translateY(12%) rotate(-3deg)' : 'translateY(20%) rotate(3deg)' }}
                 />
               ))}
@@ -127,9 +130,7 @@ export default function ProjectModal({ project, onClose }) {
                 View code
               </a>
             )}
-            {project.private && (
-              <span className="px-1 py-3 text-[14.5px] text-muted">Private B2B platform. Walkthrough available on request.</span>
-            )}
+            {project.note && <span className="px-1 py-3 text-[14.5px] text-muted">{project.note}</span>}
           </div>
         </div>
       </div>
