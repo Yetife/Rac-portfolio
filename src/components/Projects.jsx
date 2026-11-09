@@ -1,15 +1,30 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { PROJECTS } from '../data/portfolioData';
 import ProjectPreview from './ProjectPreview';
 import ProjectModal from './ProjectModal';
 
 const pad = (n) => String(n).padStart(2, '0');
 
-export default function Projects() {
-  const [hovered, setHovered] = useState(0);
-  const [openId, setOpenId] = useState(null);
+// Case studies are deep-linkable as #work/<id>, so a single case study can be shared directly.
+const idFromHash = () => {
+  const match = window.location.hash.match(/^#work\/([\w-]+)$/);
+  return match && PROJECTS.some((p) => p.id === match[1]) ? match[1] : null;
+};
 
-  const closeModal = useCallback(() => setOpenId(null), []);
+export default function Projects() {
+  const [hovered, setHovered] = useState(() => Math.max(0, PROJECTS.findIndex((p) => p.id === idFromHash())));
+  const [openId, setOpenId] = useState(idFromHash);
+
+  useEffect(() => {
+    const onHash = () => setOpenId(idFromHash());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setOpenId(null);
+    if (idFromHash()) history.replaceState(null, '', '#work');
+  }, []);
 
   const active = PROJECTS[hovered];
   const openProject = PROJECTS.find((p) => p.id === openId);
@@ -17,6 +32,7 @@ export default function Projects() {
   const open = (index) => {
     setHovered(index);
     setOpenId(PROJECTS[index].id);
+    history.replaceState(null, '', `#work/${PROJECTS[index].id}`);
   };
 
   return (
@@ -31,11 +47,46 @@ export default function Projects() {
           </h2>
         </div>
         <p data-reveal="up" data-delay="120" className="max-w-[330px] text-[15px] leading-relaxed text-stone-600 [text-wrap:pretty]">
-          Logistics, e-commerce, fintech and education. Hover a project to preview it; click to read the case study.
+          Logistics, e-commerce, fintech and education. <span className="hidden lg:inline">Hover a project to preview it; click to read the case study.</span>
+          <span className="lg:hidden">Tap a project to read the case study.</span>
         </p>
       </div>
 
-      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-x-14 gap-y-10 lg:grid-cols-2">
+      {/* Mobile & tablet: stacked cards, since there is no hover to drive the preview */}
+      <ul className="grid grid-cols-[minmax(0,1fr)] gap-12 sm:grid-cols-2 sm:gap-x-6 lg:hidden">
+        {PROJECTS.map((p, i) => (
+          <li key={p.id} data-reveal="up">
+            <button type="button" onClick={() => open(i)} className="group flex w-full cursor-pointer flex-col gap-4 text-left">
+              <span className="relative block aspect-[5/4] w-full overflow-hidden rounded-[22px] bg-cream-deep">
+                <ProjectPreview project={p} active />
+                <span className="absolute left-4 top-3.5 z-[3] rounded-full bg-white/80 px-2.5 py-1 font-mono text-[11.5px] font-medium text-ink backdrop-blur-md">
+                  {pad(i + 1)}
+                </span>
+              </span>
+              <span className="flex flex-col gap-1.5 px-0.5">
+                <span className="flex flex-wrap items-center gap-2.5">
+                  <span className="font-serif text-[34px] leading-none tracking-[-.02em] text-ink">{p.name}</span>
+                  {p.badge && (
+                    <span className="rounded-full border border-accent/35 px-2 py-[3px] font-mono text-[11px] font-medium uppercase tracking-[.06em] text-accent">
+                      {p.badge}
+                    </span>
+                  )}
+                </span>
+                <span className="text-[15px] text-stone-600">{p.sub}</span>
+                <span className="font-mono text-[11.5px] font-medium uppercase tracking-[.06em] text-stone-500">
+                  {p.category} · {p.period}
+                </span>
+                <span className="mt-1.5 text-[14.5px] font-medium leading-normal text-orange-900 [text-wrap:pretty]">{p.metrics}</span>
+                <span className="mt-2 inline-flex min-h-[44px] items-center gap-2 text-[15px] font-medium text-accent">
+                  Read case study <span aria-hidden="true">→</span>
+                </span>
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      <div className="hidden items-start gap-x-14 gap-y-10 lg:grid lg:grid-cols-2">
         {/* Sticky preview */}
         <div className="min-w-0 self-stretch">
           <div data-reveal="zoom" className="sticky top-[92px] flex min-w-0 flex-col gap-5">

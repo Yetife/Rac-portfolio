@@ -6,6 +6,9 @@ export default function SkillsMatrix() {
       <div data-reveal="up" className="mb-11 flex flex-col gap-3">
         <span className="eyebrow">03 — Skills</span>
         <h2 className="m-0 font-serif text-[clamp(40px,5vw,60px)] font-normal leading-none tracking-[-.02em]">The toolkit.</h2>
+        <p className="m-0 flex items-center gap-2 text-[13.5px] text-stone-500">
+          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" /> Used daily in production
+        </p>
       </div>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-4">
@@ -21,16 +24,13 @@ export default function SkillsMatrix() {
               <p className="m-0 text-[13.5px] leading-normal text-stone-500">{group.description}</p>
             </div>
             <ul className="flex flex-col">
-              {group.skills.map(([name, level, highlighted]) => (
-                <li key={name} className="flex items-center justify-between gap-3 border-t border-ink/[.07] py-[9px] text-sm">
-                  <span className="flex items-center gap-2">
-                    <span
-                      aria-hidden="true"
-                      className={`h-1.5 w-1.5 flex-none rounded-full ${highlighted ? 'bg-accent' : 'bg-stone-300'}`}
-                    />
-                    {name}
-                  </span>
-                  <span className="font-mono text-[11.5px] text-stone-400">{level}</span>
+              {group.skills.map(([name, highlighted]) => (
+                <li key={name} className="flex items-center gap-2 border-t border-ink/[.07] py-[9px] text-sm">
+                  <span
+                    aria-hidden="true"
+                    className={`h-1.5 w-1.5 flex-none rounded-full ${highlighted ? 'bg-accent' : 'bg-stone-300'}`}
+                  />
+                  {name}
                 </li>
               ))}
             </ul>

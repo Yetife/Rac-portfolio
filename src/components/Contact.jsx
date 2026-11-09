@@ -4,7 +4,8 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 const LINKS = [
   { label: 'LinkedIn', value: `${PERSONAL_INFO.linkedinHandle} ↗`, href: PERSONAL_INFO.linkedin, external: true },
   { label: 'GitHub', value: `${PERSONAL_INFO.githubHandle} ↗`, href: PERSONAL_INFO.github, external: true },
-  { label: 'Phone', value: PERSONAL_INFO.phone, href: PERSONAL_INFO.phoneHref },
+  { label: 'Phone (calls)', value: PERSONAL_INFO.phone, href: PERSONAL_INFO.phoneHref },
+  { label: 'WhatsApp', value: `${PERSONAL_INFO.whatsapp} ↗`, href: PERSONAL_INFO.whatsappHref, external: true },
   { label: 'Location', value: `${PERSONAL_INFO.location} · ${PERSONAL_INFO.timezone}` },
 ];
 

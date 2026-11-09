@@ -2,7 +2,7 @@ import { PERSONAL_INFO, HERO_FACTS } from '../data/portfolioData';
 
 export default function Hero() {
   return (
-    <section className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)] items-center gap-14 px-5 pb-14 pt-[72px] sm:px-7 lg:grid-cols-2">
+    <section className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)] items-center gap-14 px-5 pb-14 pt-10 sm:px-7 sm:pt-[72px] lg:grid-cols-2">
       <div className="flex flex-col gap-7">
         <div data-reveal="up" className="flex flex-wrap items-center gap-2.5 text-[13.5px]">
           <span className="inline-flex items-center gap-[9px] rounded-full border border-ink/10 bg-white py-[7px] pl-3 pr-3.5 font-medium">
@@ -44,7 +44,7 @@ export default function Hero() {
           >
             Download résumé <span aria-hidden="true">↓</span>
           </a>
-          <a href={`mailto:${PERSONAL_INFO.email}`} className="px-1.5 py-3.5 text-[15px] font-medium text-ink hover:text-accent">
+          <a href={`mailto:${PERSONAL_INFO.email}`} className="hidden px-1.5 py-3.5 sm:inline text-[15px] font-medium text-ink hover:text-accent">
             {PERSONAL_INFO.email}
           </a>
         </div>
@@ -52,10 +52,10 @@ export default function Hero() {
         <dl
           data-reveal="up"
           data-delay="480"
-          className="grid max-w-[560px] grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-px overflow-hidden rounded-[14px] border border-ink/10 bg-ink/10"
+          className="grid max-w-[560px] grid-cols-[repeat(auto-fit,minmax(104px,1fr))] gap-px overflow-hidden rounded-[14px] border border-ink/10 bg-ink/10"
         >
           {HERO_FACTS.map((fact) => (
-            <div key={fact.label} className="flex flex-col gap-[3px] bg-cream-soft px-4 py-3">
+            <div key={fact.label} className="flex flex-col gap-[3px] bg-cream-soft px-3 py-3 sm:px-4">
               <dt className="label-mono">{fact.label}</dt>
               <dd className="m-0 text-sm font-medium">{fact.value}</dd>
             </div>
@@ -64,12 +64,12 @@ export default function Hero() {
       </div>
 
       {/* No scroll-reveal here: the portrait is the LCP element, so it must paint immediately. */}
-      <div className="relative w-full max-w-[500px] justify-self-center">
+      <div className="relative w-full max-w-[300px] justify-self-center sm:max-w-[400px] lg:max-w-[500px]">
         <div className="group aspect-[4/5] overflow-hidden rounded-[28px] bg-cream-deep shadow-[0_40px_80px_-40px_rgba(120,53,15,.45)]">
           <img
             src={PERSONAL_INFO.avatar}
             srcSet={PERSONAL_INFO.avatarSrcSet}
-            sizes="(min-width: 1024px) 500px, calc(100vw - 40px)"
+            sizes="(min-width: 1024px) 500px, (min-width: 640px) 400px, 300px"
             width="696"
             height="870"
             fetchPriority="high"

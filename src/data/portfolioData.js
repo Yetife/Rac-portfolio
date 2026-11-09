@@ -5,8 +5,7 @@ const enumImg = `${IMG}/enum.webp`;
 const semicolonImg = `${IMG}/semicolon.webp`;
 const SOLAR_IMG = `${IMG}/solar.webp`;
 const EMAX_HOME = `${IMG}/emax-home.webp`;
-// Not added yet — drop a WebP with this name in /public/assets/projects to show the second phone.
-const EMAX_DETAIL = `${IMG}/emax-detail.webp`;
+// To show a second phone, add /public/assets/projects/emax-detail.webp and append it to E-Max "phones".
 
 export const PERSONAL_INFO = {
   firstName: "Yetunde",
@@ -22,6 +21,8 @@ export const PERSONAL_INFO = {
   email: "olasehindey3@gmail.com",
   phone: "+234 704 794 3726",
   phoneHref: "tel:+2347047943726",
+  whatsapp: "+234 809 639 3031",
+  whatsappHref: "https://wa.me/2348096393031",
   github: "https://github.com/Yetife",
   githubHandle: "@Yetife",
   linkedin: "https://www.linkedin.com/in/yetunde-olasehinde",
@@ -39,9 +40,9 @@ export const HERO_FACTS = [
 
 export const IMPACT_METRICS = [
   { metric: "4+ Years", label: "Production Engineering", description: "Building scalable web products across high-volume fintech and AI marketplace domains." },
-  { metric: "40% Faster", label: "Page Load & LCP Reduction", description: "Measurable speed boost via aggressive tree-shaking, code splitting, and memoization." },
-  { metric: "60% Fewer", label: "Redundant Re-renders", description: "Eliminated prop drilling and unnecessary re-renders with Zustand & Redux Toolkit." },
-  { metric: "WCAG 2.1", label: "Responsive & Accessible", description: "Interfaces that perform seamlessly across all viewports and slow networks." },
+  { metric: "25% Faster", label: "Data Retrieval", description: "Creditwave Finance: REST API integration for loan, savings and transaction workflows." },
+  { metric: "+20%", label: "Search-to-Cart Conversion", description: "Kuve: frontend latency improvements on the AI shopping assistant and discovery flows." },
+  { metric: "94% Lighter", label: "Page Weight: 20 MB → 1.2 MB", description: "Emax Logistics: audited on throttled 3G/4G and cut total page weight by 94% with WebP/AVIF, responsive images and lazy loading." },
 ];
 
 // Order here is the order shown in "Selected work".
@@ -52,10 +53,10 @@ export const PROJECTS = [
     name: "E-Max",
     sub: "Logistics Partner Management System",
     category: "B2B SaaS",
-    period: "Lead Frontend",
-    badge: "Lead",
+    period: "2026 — Present",
+    badge: "Current",
     kind: "phones",
-    phones: [EMAX_HOME, EMAX_DETAIL],
+    phones: [EMAX_HOME],
     bg: "#efd9c6",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Web + Mobile", "Multi-tenant"],
     metrics: "One shared workspace per vendor–logistics partnership, replacing WhatsApp threads for inventory, dispatch and chat.",
@@ -64,7 +65,7 @@ export const PROJECTS = [
     private: true,
     challenge: "Two kinds of organisation, vendors and logistics companies, work inside the same partnership with different roles and permissions. Dispatch has to follow a strict pipeline from Created to Delivered, and riders often work on weak mobile signal.",
     architecture: [
-      "Led the frontend in Next.js and TypeScript with Tailwind CSS, sharing one design language across the web dashboard and the rider/dispatcher mobile app.",
+      "Leading the frontend redesign in Next.js and TypeScript with Tailwind CSS, sharing one design language across the web dashboard and the rider/dispatcher mobile app.",
       "Built role-aware interfaces for Owner, Manager, Staff, Dispatcher and Storekeeper, with options filtered by organisation type.",
       "Designed the dispatch flow end to end: claim, pick up, in transit, and delivery with photo proof or a reported failure reason.",
     ],
@@ -81,16 +82,16 @@ export const PROJECTS = [
     url: "getkuve.com",
     bg: "#dfe4da",
     tags: ["Next.js 14", "TypeScript", "Zustand", "Tailwind CSS", "RESTful APIs", "AI Integration"],
-    metrics: "Reduced checkout bounce by 22% & cut re-renders across dynamic product variations.",
+    metrics: "Frontend latency work on the AI shopping assistant helped lift search-to-cart conversion by 20%.",
     demo: "https://getkuve.com/",
-    code: "https://github.com/Yetife",
+    code: "",
     challenge: "The legacy checkout process suffered from severe render thrashing caused by multi-level prop drilling across complex item variations, inline address edits, and live stock queries.",
     architecture: [
       "Architected modular Zustand store slices decoupling shopping cart, delivery location, and Lisa AI chat interactions.",
       "Engineered real-time optimistic UI updates for instant cart modification feedback before server reconciliation.",
       "Integrated the Lisa AI conversational interface with structured JSON schema streaming for real-time recommendation cards.",
     ],
-    outcome: "Streamlined the checkout journey down to 3 intuitive steps, slashing unnecessary component re-renders by over 60% and delivering sub-2s time-to-interactive.",
+    outcome: "Search-to-cart conversion rose 20%, and moving checkout state into Zustand cut redundant re-renders by around 60%.",
   },
   {
     id: "solar",
@@ -118,7 +119,7 @@ export const PROJECTS = [
     id: "enum",
     name: "Enum",
     sub: "Enterprise Learning & Talent Platform",
-    category: "Fintech & LMS",
+    category: "EdTech & LMS",
     period: "Production Platform",
     kind: "shot",
     image: enumImg,
@@ -127,7 +128,7 @@ export const PROJECTS = [
     tags: ["React", "TypeScript", "Redux Toolkit", "Tailwind CSS", "Enterprise Architecture"],
     metrics: "Empowering thousands of learners and evaluators across Africa with instant assessment feedback.",
     demo: "https://enum.africa",
-    code: "https://github.com/Yetife",
+    code: "",
     challenge: "Managing complex nested assessment state (timed coding tests, multi-stage quizzes, and synchronous interviewer scoring) without data loss on spotty internet connections.",
     architecture: [
       "Implemented normalized Redux Toolkit slices with automatic local storage backup for resilient test recovery.",
@@ -140,22 +141,23 @@ export const PROJECTS = [
     id: "semicolon",
     name: "Semicolon Africa",
     sub: "Tech Talent Ecosystem",
-    category: "Design Systems",
-    period: "Enterprise Ecosystem",
+    category: "Web Platforms",
+    period: "2022 — 2023",
     kind: "shot",
     image: semicolonImg,
     url: "semicolon.africa",
     bg: "#ead8d0",
-    tags: ["Vue.js", "Sass", "Tailwind CSS", "Performance Optimization"],
-    metrics: "40% reduction in initial page load time through asset compression and route-based code splitting.",
+    tags: ["React", "Vue.js", "TypeScript", "Axios", "Figma to code"],
+    metrics: "Event and engagement features plus production debugging contributed to 25% fewer production issues.",
     demo: "https://semicolon.africa",
-    code: "https://github.com/Yetife",
-    challenge: "A legacy corporate web presence with bloated styles and unoptimized heavy graphics caused high bounce rates on mobile networks.",
+    code: "",
+    challenge: "My first engineering role: shipping production features across Semicolon's web platforms in both React and Vue, straight from product requirements and Figma designs.",
     architecture: [
-      "Modernized the architecture with modular Vue component patterns and utility-first Tailwind CSS.",
-      "Enforced responsive WebP image pipelines and dynamic imports for non-critical sections.",
+      "Built responsive interfaces in React.js, Vue.js and TypeScript from Figma specifications.",
+      "Created modular, reusable components and integrated REST APIs with Axios for dynamic features.",
+      "Built the event-based calendar and engagement features, and supported production debugging.",
     ],
-    outcome: "Cut overall page load duration by 40%, generating a significant lift in prospective student inquiries.",
+    outcome: "Contributed to a 15% reduction in project timelines and 25% fewer production issues.",
   },
 ];
 
@@ -181,10 +183,10 @@ export const EXPERIENCE = [
     period: "May 2025 — May 2026",
     location: "Lagos",
     type: "Full-Time",
-    highlight: "Led frontend architecture for AI-powered e-commerce & checkout workflows",
+    highlight: "Built discovery, AI shopping assistant and checkout flows; contributed to a 20% lift in search-to-cart conversion",
     responsibilities: [
-      "Architected and shipped high-performance user journeys spanning product catalogues, Lisa AI shopping assistant, and checkout using Next.js, TypeScript, and Tailwind CSS.",
-      "Spearheaded state architecture migration from prop-drilling to isolated Zustand stores, reducing redundant re-renders by 60%.",
+      "Built and shipped user journeys spanning product catalogues, Lisa AI shopping assistant, and checkout using Next.js, TypeScript, and Tailwind CSS.",
+      "Drove the state migration from prop-drilling to isolated Zustand stores, reducing redundant re-renders by 60%.",
       "Collaborated closely with AI engineers and product designers to build responsive, streaming conversational interfaces with graceful fallback handling.",
       "Conducted rigorous code reviews, established linting/formatting standards, and ensured 100% adherence to mobile-first responsive guidelines.",
     ],
@@ -207,42 +209,28 @@ export const EXPERIENCE = [
     technologies: ["React", "REST APIs", "Dashboards", "Agile"],
   },
   {
-    role: "Frontend Engineer",
+    role: "Junior Frontend Engineer",
     company: "Semicolon Africa",
-    period: "May 2022 — Dec 2023",
-    location: "Lagos",
+    period: "January 2022 — November 2023",
+    location: "Lagos, Nigeria",
     type: "Full-Time",
-    highlight: "Core contributor across web platforms & mentor to junior developer cohorts",
+    highlight: "Joined from the Semicolon software engineering programme. Stayed on for my first two months at Creditwave before moving over fully.",
     responsibilities: [
-      "Built, maintained, and optimized production web applications using Vue.js, React, and TypeScript.",
-      "Improved Core Web Vitals and shaved 40% off average page load times through lazy loading, asset optimization, and refactored bundle splits.",
-      "Mentored junior engineers through pair programming, debugging workshops, and frontend architectural best practices.",
-      "Designed and documented modular UI component microservices, accelerating engineering sprint velocity across teams.",
+      "Built and maintained web applications with React.js, Vue.js, and TypeScript, delivering responsive interfaces from product requirements and Figma specifications.",
+      "Created modular, reusable components and integrated REST APIs using Axios to support dynamic application features.",
+      "Participated in sprint planning, code reviews, debugging, and feature delivery, contributing to a 15% reduction in project timelines.",
+      "Built event-based calendar and engagement features and supported production debugging, contributing to a 25% reduction in production issues.",
     ],
-    technologies: ["Vue.js", "React", "TypeScript", "Redux", "Tailwind CSS", "Sass"],
-  },
-  {
-    role: "Frontend Developer Intern",
-    company: "Semicolon Africa",
-    period: "Jan 2022 — Apr 2022",
-    location: "Lagos",
-    type: "Internship",
-    highlight: "Component development and engaging interaction design",
-    responsibilities: [
-      "Developed reusable UI components using React and Material UI, standardizing design consistency across customer touchpoints.",
-      "Shipped an interactive, event-driven calendar interface that increased user interaction with educational campaigns.",
-      "Participated actively in daily Agile standups, two-week sprint planning, and automated testing.",
-    ],
-    technologies: ["React", "JavaScript", "Material UI", "SCSS", "REST APIs"],
+    technologies: ["React", "Vue.js", "TypeScript", "Axios", "REST APIs", "Figma"],
   },
 ];
 
-// Each skill: [name, level, highlighted]
+// Each skill: [name, highlighted]. Highlighted = used daily in production.
 export const SKILLS = [
-  { category: "Core Frontend", description: "Resilient, performant, type-safe interfaces", skills: [["React (18/19)", "Advanced", true], ["Next.js (App Router)", "Advanced", true], ["TypeScript", "Proficient", true], ["JavaScript (ES6+)", "Expert", true], ["Vue.js", "Proficient", false], ["HTML5 / Semantic Web", "Expert", false]] },
-  { category: "State & Data", description: "Predictable client state and caching", skills: [["Zustand", "Advanced", true], ["Redux Toolkit", "Advanced", true], ["RESTful APIs", "Expert", true], ["Optimistic UI", "Advanced", true], ["Async State / Caching", "Advanced", false], ["Axios / Fetch API", "Expert", false]] },
-  { category: "Styling & Design Systems", description: "Pixel-perfect, accessible, responsive", skills: [["Tailwind CSS", "Expert", true], ["Design Tokens", "Advanced", true], ["Accessibility (WCAG 2.1)", "Advanced", true], ["Sass / SCSS", "Proficient", false], ["Responsive Layouts", "Expert", false], ["Micro-Animations", "Proficient", false]] },
-  { category: "Performance & Quality", description: "Fast code that scales in production", skills: [["Core Web Vitals", "Advanced", true], ["Code Splitting & Bundling", "Advanced", true], ["Chrome DevTools Profiling", "Advanced", true], ["Git / CI/CD Workflows", "Proficient", false], ["Unit Testing (Jest)", "Competent", false], ["Agile / Scrum Delivery", "Advanced", false]] },
+  { category: "Core Frontend", description: "Resilient, performant, type-safe interfaces", skills: [["React (18/19)", true], ["Next.js (App Router)", true], ["TypeScript", true], ["JavaScript (ES6+)", true], ["Vue.js", false], ["HTML5 / Semantic Web", false]] },
+  { category: "State & Data", description: "Predictable client state and caching", skills: [["Zustand", true], ["Redux Toolkit", true], ["RESTful APIs", true], ["Optimistic UI", true], ["React Query / RTK Query", false], ["Axios / Fetch API", false]] },
+  { category: "Styling & Design Systems", description: "Pixel-perfect, accessible, responsive", skills: [["Tailwind CSS", true], ["Design Tokens", true], ["Accessibility (WCAG 2.1)", true], ["Sass / SCSS", false], ["Responsive Layouts", false], ["Micro-Animations", false]] },
+  { category: "Performance & Quality", description: "Fast code that scales in production", skills: [["Core Web Vitals", true], ["Code Splitting & Bundling", true], ["Chrome DevTools Profiling", true], ["Git / CI/CD Workflows", false], ["Jest & React Testing Library", false], ["Cypress", false], ["Agile / Scrum Delivery", false]] },
 ];
 
 export const PRINCIPLES = [

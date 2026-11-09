@@ -7,6 +7,7 @@ import SkillsMatrix from './components/SkillsMatrix';
 import EngineeringPhilosophy from './components/EngineeringPhilosophy';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import MobileContactBar from './components/MobileContactBar';
 import useReveal from './hooks/useReveal';
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <MobileContactBar />
     </div>
   );
 }

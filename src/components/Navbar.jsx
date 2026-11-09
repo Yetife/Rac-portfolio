@@ -10,17 +10,17 @@ const LINKS = [
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-20 border-b border-ink/[.08] bg-cream/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-x-5 gap-y-2.5 px-5 py-3.5 sm:px-7">
-        <a href="#top" className="flex items-center gap-2.5 text-ink hover:text-ink">
-          <span className="flex h-[34px] w-[34px] items-center justify-center rounded-full bg-ink font-serif text-[17px] leading-none text-cream">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-x-5 px-5 py-3 sm:px-7 sm:py-3.5">
+        <a href="#top" className="flex min-w-0 items-center gap-2.5 text-ink hover:text-ink">
+          <span className="flex h-[34px] w-[34px] flex-none items-center justify-center rounded-full bg-ink font-serif text-[17px] leading-none text-cream">
             {PERSONAL_INFO.initials}
           </span>
-          <span className="text-[15px] font-semibold tracking-[-.01em]">{PERSONAL_INFO.name}</span>
+          <span className="truncate text-[15px] font-semibold tracking-[-.01em]">{PERSONAL_INFO.name}</span>
         </a>
 
-        <nav aria-label="Primary" className="flex flex-wrap items-center gap-3 text-sm sm:gap-[26px]">
+        <nav aria-label="Primary" className="flex flex-none items-center gap-3 text-sm sm:gap-[26px]">
           {LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="text-stone-600 hover:text-ink">
+            <a key={link.href} href={link.href} className="hidden text-stone-600 hover:text-ink sm:inline">
               {link.label}
             </a>
           ))}
